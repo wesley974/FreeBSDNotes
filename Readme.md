@@ -1,5 +1,5 @@
-# TODO
+# New parts
 - ZFS
 - Jails
 - Bhyve
-- Awesome tools (mainly cbsd)
+- Bonus: CBSD
