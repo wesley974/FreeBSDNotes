@@ -1,11 +1,9 @@
 <div class="slides">
-  <!-- Slide 1 -->
   <section>
     <img src="https://www.freebsd.org/gifs/releases.jpg" alt="image_from_freebsd_org">
     <h1>13.0 Updated!</h1>
   </section>
         
-  <!-- Slide 2 -->
   <section>
       <h2>history</h2>
       <p>
@@ -14,7 +12,6 @@
       </p>
   </section>
 
-  <!-- Slide 3 -->
   <section>
     <h2>why use openbsd</h2>
     <ul>
@@ -41,7 +38,6 @@
     </ul>
   </section>
         
-  <!-- Slide 4 -->
   <section>
     <h2>openbsd innovations</h2>
     <p>
@@ -49,7 +45,6 @@
     </p>
   </section>
 
-  <!-- Slide 5 -->
   <section>
     <h2>openbsd version numbers</h2>
     <ul>
@@ -58,7 +53,6 @@
     </ul>
   </section>
 
-  <!-- Slide 6 -->
   <section>
     <h2>openbsd's flavors</h2>
     <ul>
@@ -68,7 +62,6 @@
     </ul>
   </section>
 
-  <!-- Slide 7 -->
   <section>
     <h2>cvs repository</h2>
     <p>
@@ -76,7 +69,6 @@
     </p>
   </section>
 
-  <!-- Slide 8 -->
   <section>
     <h2>cvsweb</h2>
     <p>
@@ -84,7 +76,6 @@
     </p>
   </section>
 
-  <!-- Slide 9 -->
   <section>
     <h2>manual pages</h2>
     <pre><code>
@@ -97,13 +88,11 @@
     </p>
   </section>
 
-  <!-- Slide 10 -->
   <section>
     <h2>supported hardware</h2>
     <p><a target="_blank" href="https://dmesgd.nycbug.org/index.cgi?do=index&amp;fts=OpenBSD">Some dmesgs</a></p>
   </section>
 
-  <!-- Slide 11 -->
   <section>
     <h2>installation</h2>
     <p>
@@ -114,7 +103,6 @@
     </blockquote>
   </section>
 
-  <!-- Slide 12 -->
   <section>
     <h2>auto-install</h2>
     <p>
@@ -122,7 +110,6 @@
     </p>
   </section>
 
-  <!-- Slide 13 -->
   <section>
     <h2>filesystem</h2>
     <p>
@@ -134,7 +121,11 @@
     </blockquote>          
   </section>
 
-  <!-- Slide 14 -->
+  <section>
+    <h2>ZFS</h2>
+    <p>...</p>
+  </section>
+
   <section>
     <h2>networking files</h2>
     <table>
@@ -169,7 +160,6 @@
     </blockquote>
   </section>
 
-  <!-- Slide 15 -->
   <section>
     <h2>networking</h2>
     <pre><code>
@@ -185,7 +175,6 @@
     </code></pre>
   </section>
 
-  <!-- Slide 16 -->
   <section>
     <h2>networking (set at startup)</h2>
     <h3>Example 1: configure static IP address for re0</h3>
@@ -199,7 +188,6 @@
     </blockquote>
   </section>
 
-  <!-- Slide 17 -->
   <section>
     <h2>networking (set at startup)</h2>
     <h3>Example 2: configure DHCP for bge0</h3>
@@ -213,7 +201,6 @@
     </blockquote>
   </section>
 
-  <!-- Slide 18 -->
   <section>
     <h2>networking (set at startup)</h2>
     <h3>Example 3: configure wireless</h3>
@@ -238,7 +225,6 @@
     </blockquote>
   </section>
 
-  <!-- Slide 19 -->
   <section>
     <h2>routing</h2>
     <pre><code>
@@ -254,7 +240,6 @@
     </code></pre>
   </section>
 
-  <!-- Slide 20 -->
   <section>
     <h2>pf ruleset sample</h2>
     <pre><code>
@@ -272,8 +257,7 @@
       Read: <a target="_blank" href="https://man.openbsd.org/OpenBSD-6.9/pf.conf">pf.conf(5)</a>
     </blockquote>
   </section>
-
-  <!-- Slide 21 -->
+  
   <section>
     <h2>pf (packet filter)</h2>
 
@@ -297,8 +281,7 @@
       Read: <a target="_blank" href="https://man.openbsd.org/OpenBSD-6.9/pfctl">pfctl(8)</a>
     </blockquote>
   </section>
-
-  <!-- Slide 22 -->
+  
   <section>
     <h2>debug pf with tcpdump</h2>
     <pre><code>
@@ -309,15 +292,13 @@
       Read: <a target="_blank" href="https://man.openbsd.org/OpenBSD-6.9/tcpdump">tcpdump(8)</a>
     </blockquote>
   </section>
-
-  <!-- Slide 23 -->
+  
   <section>
     <h2>pf user's guide</h2>
     <p><a target="_blank" href="https://www.openbsd.org/faq/pf">https://www.openbsd.org/faq/pf</a></p>
     <p><a target="blank" href="https://home.nuug.no/~peter/pftutorial/#1">PF and Networking Tutorial</a></p>
   </section>
-
-  <!-- Slide 24 -->
+  
   <section>
     <h2>manage users</h2>
     <pre><code>
@@ -335,8 +316,7 @@
       Read: <a target="_blank" href="https://man.openbsd.org/OpenBSD-6.9/adduser">adduser(8)</a>
     </blockquote>
   </section>
-
-  <!-- Slide 25 -->
+  
   <section>
     <h2>manage groups</h2>
     <h3>File: /etc/group</h3>
@@ -354,8 +334,7 @@
       <a target="_blank" href="https://man.openbsd.org/OpenBSD-6.9/group.5">group(5)</a>
     </blockquote>
   </section>
-
-  <!-- Slide 26 -->
+  
   <section>
     <h2>sudo replaced with doas(1)</h2>
     <pre><code>
@@ -378,8 +357,7 @@
       Try <a target="_blank" href="http://www.tedunangst.com/flak/post/doas-mastery">doas mastery</a> (blog).
     </blockquote>
   </section>
-
-  <!-- Slide 27 -->
+  
   <section>
     <h2>install packages</h2>
     <pre><code>
@@ -406,8 +384,7 @@
       <a target="_blank" href="https://man.openbsd.org/OpenBSD-6.9/installurl">installurl(5)</a>
     </blockquote>
   </section>
-
-  <!-- Slide 28 -->
+  
   <section>
     <h2>packages</h2>
     <pre><code>
@@ -427,8 +404,7 @@
       <a target="_blank" href="https://man.openbsd.org/OpenBSD-6.9/packages">packages(7)</a>
     </blockquote>
   </section>
-
-  <!-- Slide 29 -->
+  
   <section>
     <h2>packages (continued)</h2>
     <pre><code>
@@ -449,8 +425,7 @@
       Read: <a target="_blank" href="https://man.openbsd.org/OpenBSD-6.9/pkg_delete">pkg_delete(1)</a>
     </blockquote>
   </section>
-
-  <!-- Slide 30 -->
+  
   <section>
     <h2>install non-free firmware packages</h2>
     <pre><code>
@@ -464,8 +439,7 @@
       Read: <a target="_blank" href="https://man.openbsd.org/OpenBSD-6.9/fw_update">fw_update(1)</a>
     </blockquote>
   </section>
-
-  <!-- Slide 31 -->
+  
   <section>
     <h2>manage daemons, services</h2>
     <h3>File: /etc/rc.conf.local</h3>
@@ -482,8 +456,7 @@
       Read: <a target="_blank" href="https://man.openbsd.org/OpenBSD-6.9/rcctl">rcctl(8)</a>
     </blockquote>
   </section>
-
-  <!-- Slide 32 -->
+  
   <section>
     <h2>run a script at startup</h2>
     <h3>File: /etc/rc.local</h3>
@@ -491,8 +464,7 @@
       Read: <a target="_blank" href="https://man.openbsd.org/OpenBSD-6.9/rc.local">rc.local(8)</a>
     </blockquote>
   </section>
-
-  <!-- Slide 33 -->
+  
   <section>
     <h2>update openbsd (-stable)</h2>
     <p>
@@ -502,8 +474,7 @@
       Errata patches are generated for the 2 last releases (<a target="_blank" href="https://www.openbsd.org/errata68.html">6.8</a>, <a target="_blank" href="https://www.openbsd.org/errata69.html">6.9</a>).
     </blockquote>
   </section>
-
-  <!-- Slide 34 -->
+  
   <section>
     <h2>update openbsd (-stable), the tools</h2>
     <p>
@@ -513,8 +484,7 @@
       And <code>pkg_add -u</code> to update packages.
     </blockquote>
   </section>
-
-  <!-- Slide 35 -->
+  
   <section>
     <h2>upgrade openbsd</h2>
     <p>
@@ -525,7 +495,6 @@
     </blockquote>
   </section>
 
-  <!-- Slide 36 -->
   <section>
     <h2>openbsd filesystem</h2>
 
@@ -555,8 +524,7 @@
       </tr>
     </tbody></table>
   </section>
-
-  <!-- Slide 37 -->
+  
   <section>
     <h2>openbsd filesystem (continued)</h2>
     <table>
@@ -581,8 +549,7 @@
       </tr>
     </tbody></table>
   </section>
-
-  <!-- Slide 38 -->
+  
   <section>
     <h2>openbsd filesystem (continued)</h2>
     <table>
@@ -608,8 +575,7 @@
 
     </tbody></table>
   </section>
-
-  <!-- Slide 39 -->
+  
   <section>
     <h2>openbsd filesystem (continued)</h2>
     <table>
@@ -643,8 +609,7 @@
       Read: <a target="_blank" href="https://man.openbsd.org/OpenBSD-6.9/hier">hier(7)</a>
     </blockquote>
   </section>
-
-  <!-- Slide 40 -->
+  
   <section>
     <h2>openbsd kernels</h2>
     <p><strong>/bsd</strong><br>
@@ -654,35 +619,30 @@
     </blockquote>
   </section>
 
-  <!-- Slide 41 -->
   <section>
     <h2>openbsd kernels (continued)</h2>
     <p><strong>/bsd.booted</strong><br>
     Kernel executable, a resume from hibernation (handled by the bootloader).</p>
   </section>
 
-  <!-- Slide 42 -->
   <section>
     <h2>openbsd kernels</h2>
     <p><strong>/obsd</strong><br>
     Old kernel, next boot it will use the new kernel /bsd (kernel relinking).</p>
   </section>
-
-  <!-- Slide 43 -->
+  
   <section>
     <h2>openbsd kernels (continued)</h2>
     <p><strong>/bsd.sp</strong><br>
     Kernel executable for single processor machines.</p>
   </section>
-
-  <!-- Slide 44 -->
+  
   <section>
     <h2>openbsd kernels (continued)</h2>
     <p><strong>/bsd.mp</strong><br>
     Kernel executable for multiprocessor machines.</p>
   </section>
 
-  <!-- Slide 45 -->
   <section>
     <h2>openbsd kernels (continued)</h2>
     <p><strong>/bsd.rd</strong></p>
@@ -690,8 +650,7 @@
       Installation kernel. The built-in RAM disk contains utilities which can be run without an external file system, so this kernel is useful for limited system maintenance too.
     </p>
   </section>
-
-  <!-- Slide 46 -->
+  
   <section>
     <h2>tune the system</h2>
     <p>
@@ -701,8 +660,7 @@
       <a target="_blank" href="https://man.openbsd.org/OpenBSD-6.9/config">config(8)</a> modify a kernel<br>
     </p>
   </section>
-
-  <!-- Slide 47 -->
+  
   <section>
     <h2>setting laptop hibernation (sysctl)</h2>
     <table>
@@ -720,14 +678,22 @@
       </tr>
     </tbody></table>
   </section>
-  
-  <!-- Slide 48 -->
+   
   <section>
-    <h2>Full OpenBSD Startup described!</h2>
+    <h2>Full FreeBSD Startup described!</h2>
     <p>...</p>
   </section>
 
-  <!-- Slide 49 -->
+  <section>
+    <h2>Jails</h2>
+    <p>...
+  </section>
+
+  <section>
+    <h2>Bhyve</h2>
+    <p>...
+  </section>
+  
   <section>
     <h2>maintenance</h2>
     <table>
@@ -762,8 +728,7 @@
       <a target="_blank" href="https://man.openbsd.org/OpenBSD-6.9/top">top(1)</a>
     </blockquote>
   </section>
-
-  <!-- Slide 50 -->
+  
   <section>
     <h2>maintenance (continued)</h2>
     <table>
@@ -786,8 +751,7 @@
       <a target="_blank" href="https://man.openbsd.org/OpenBSD-6.9/rcctl">rcctl(8)</a>
     </blockquote>
   </section>
-  
-  <!-- Slide 51 -->
+    
   <section>
     <h2>ktrace/kdump sample usage</h2>
     <table>
@@ -806,8 +770,7 @@
       <a target="_blank" href="https://man.openbsd.org/OpenBSD-6.9/kdump">kdump(1)</a>
     </blockquote>
   </section>
-
-  <!-- Slide 52 -->
+  
   <section>
     <h2>some useful packages</h2>
     <table>
@@ -827,8 +790,7 @@
       </tr>
     </tbody></table>
   </section>
-
-  <!-- Slide 53 -->
+  
   <section>
     <h2>some useful packages (continued)</h2>
     <table>
@@ -847,13 +809,16 @@
     </tbody></table>
   </section>
 
-  <!-- Slide 54 -->
+  <section>
+    <h2>Bonus: CBSD</h2>
+    <p>...</p>
+  </section>
+ 
   <section>
     <h2>presentations &amp; papers </h2>
     <p><a target="_blank" href="https://www.openbsd.org/events.html">https://www.openbsd.org/events.html</a></p>
   </section>
-
-  <!-- Slide 55 -->
+ 
   <section>
     <h2>need more help</h2>
     <p>
@@ -863,8 +828,7 @@
       Mailing list: <a target="_blank" href="https://www.openbsd.org/mail.html">misc@</a>
     </p>
   </section>
-
-  <!-- Slide 56 -->
+  
   <section>
     <h2>openbsd vps hosting</h2>
     <p>It's time to create your own OpenBSD VM !</p>
