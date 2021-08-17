@@ -496,6 +496,26 @@
     </section>
     
     <section>
+      <h1>FreeBSD Applying Security Updates</h1>
+      <pre><code>
+        freebsd-update fetch install
+
+      </code></pre>
+    </section>
+    
+    <section>
+      <h1>See reports about vulnerable software packages</h1>
+      <pre>code>
+      # Execute the following command:
+      pkg audit -F
+
+      # See a list of vulnerable packages, run:
+      pkg audit
+      
+      </code></pre>
+    </section>
+    
+    <section>
       <h2>upgrade openbsd</h2>
       <p>
         To upgrade 6.7 to 6.9, you need to follow instructions from: <a target="_blank" href="https://www.openbsd.org/faq/upgrade68.html">https://www.openbsd.org/faq/upgrade68.html</a><br>and then<br><a target="_blank" href="https://www.openbsd.org/faq/upgrade69.html">https://www.openbsd.org/faq/upgrade69.html</a>
