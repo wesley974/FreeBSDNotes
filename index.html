@@ -376,13 +376,13 @@
         https://cdn.openbsd.org/pub/OpenBSD
 
         # Search for packages
-        pkg_info -Q foobar
+        pkg search foobar
 
         # For example, to install Squid
-        pkg_add squid
+        pkg install squid
 
         # Update packages
-        pkg_add -u
+        pkg update
 
       </code></pre>
       <blockquote>
@@ -390,9 +390,9 @@
       </blockquote>
       <blockquote>
         Read:
-        <a target="_blank" href="https://man.openbsd.org/OpenBSD-6.9/pkg_info">pkg_info(1)</a>,
-        <a target="_blank" href="https://man.openbsd.org/OpenBSD-6.9/pkg_add">pkg_add(1)</a>,
-        <a target="_blank" href="https://man.openbsd.org/OpenBSD-6.9/installurl">installurl(5)</a>
+        <a target="_blank" href="https://man.openbsd.org/pkg-info">pkg_info(8)</a>,
+        <a target="_blank" href="https://man.openbsd.org/pkg-install">pkg_add(8)</a>,
+        <a target="_blank" href="https://man.openbsd.org/installurl">installurl(5)</a>
       </blockquote>
     </section>
     
@@ -400,19 +400,19 @@
       <h2>packages</h2>
       <pre><code>
         # List packages installed
-        pkg_info
+        pkg info
 
         # List files installed by a package
-        pkg_info -L foobar
+        pkg info -l foobar
 
         # View install-message for a specific package
-        pkg_info -M foobar
+        pkg_info -D foobar
 
      </code></pre>
       <blockquote>
         Read:
-        <a target="_blank" href="https://man.openbsd.org/OpenBSD-6.9/pkg_info">pkg_info(1)</a>,
-        <a target="_blank" href="https://man.openbsd.org/OpenBSD-6.9/packages">packages(7)</a>
+        <a target="_blank" href="https://man.freebsd.org/pkg-info">pkg-info(8)</a>,
+        <a target="_blank" href="https://man.freebsd.org/packages">pkg(8)</a>
       </blockquote>
     </section>
     
@@ -420,20 +420,20 @@
       <h2>packages (continued)</h2>
       <pre><code>
         # Delete a Package
-        pkg_delete foobar
+        pkg delete foobar
 
         # Show unused dependencies
-        pkg_delete -an
+        pkg autoremove -n
 
         # Delete unused dependencies
-        pkg_delete -a
+        pkg autoremove
 
-        # Delete all except 'nginx'
-        pkg_delete -X nginx
+        # Delete all packages
+        pkk delete -a
 
       </code></pre>
       <blockquote>
-        Read: <a target="_blank" href="https://man.openbsd.org/OpenBSD-6.9/pkg_delete">pkg_delete(1)</a>
+        Read: <a target="_blank" href="https://man.freebsd.org/pkg-delete">pkg-delete(8)</a>
       </blockquote>
     </section>
     
