@@ -133,12 +133,8 @@
       <h2>networking files</h2>
       <table>
         <tbody><tr>
-          <td>/etc/myname</td>
-          <td>Default hostname</td>
-        </tr>
-        <tr>
-          <td>/etc/mygate</td>
-          <td>Default gateway</td>
+          <td>/etc/rc.conf</td>
+          <td>Default hostname, gateway, configuration for each network interface</td>
         </tr>
         <tr>
           <td>/etc/hosts</td>
@@ -148,18 +144,12 @@
           <td>/etc/resolv.conf</td>
           <td>Resolver (DNS)</td>
         </tr>
-        <tr>
-          <td>/etc/hostname.if</td>
-          <td>Configuration for each network interface, for example: /etc/hostname.bge0</td>
-        </tr>
       </tbody></table>
       <blockquote>
         Read:
-        <a target="_blank" href="https://man.openbsd.org/OpenBSD-6.9/myname">myname(5)</a>,
-        <a target="_blank" href="https://man.openbsd.org/OpenBSD-6.9/mygate">mygate(5)</a>,
-        <a target="_blank" href="https://man.openbsd.org/OpenBSD-6.9/hostname.if">hostname.if(5)</a>,
-        <a target="_blank" href="https://man.openbsd.org/OpenBSD-6.9/resolv.conf">resolv.conf(5)</a>,
-        <a target="_blank" href="https://man.openbsd.org/OpenBSD-6.9/hosts">hosts(5)</a>
+        <a target="_blank" href="https://man.freebsd.org/rc.conf/5">rc.conf(5)</a>,
+        <a target="_blank" href="https://man.freebsd.org/resolv.conf/5">resolv.conf(5)</a>,
+        <a target="_blank" href="https://man.freebsd.org/hosts/5">hosts(5)</a>
       </blockquote>
     </section>
 
@@ -173,7 +163,7 @@
         dhclient re0
 
         # Perform network (re)initialisation
-        sh /etc/netstart
+        sh /etc/rc.d/netif restart
 
       </code></pre>
     </section>
@@ -182,12 +172,11 @@
       <h2>networking (set at startup)</h2>
       <h3>Example 1: configure static IP address for re0</h3>
       <pre><code>
-        File: /etc/hostname.re0
-        inet 192.168.0.58 255.255.255.0
+        sysrc ifconfig_re0="inet 192.168.0.58/24"
 
       </code></pre>
       <blockquote>
-        Don't forget to run <code>sh /etc/netstart re0</code> to apply changes to running system.
+        Don't forget to run <code>sh /etc/rc.d/netif restart</code> to apply changes to running system.
       </blockquote>
     </section>
 
@@ -195,12 +184,11 @@
       <h2>networking (set at startup)</h2>
       <h3>Example 2: configure DHCP for bge0</h3>
       <pre><code>
-        File: /etc/hostname.bge0
-        dhcp
+        sysrc ifconfig_re0="DHCP"
 
       </code></pre>
       <blockquote>
-        Don't forget to run <code>sh /etc/netstart bge0</code> to apply changes to running system.
+        Don't forget to run <code>sh /etc/rc.d/netif restart</code> to apply changes to running system.
       </blockquote>
     </section>
 
@@ -232,10 +220,10 @@
       <h2>routing</h2>
       <pre><code>
         # Show the routing table (ipv4)
-        route -n show -inet
+        netstat -rn4
 
         # Show the routing table (ipv6)
-        route -n show -inet6
+        netstat -rn6
 
         # Delete all gateway entries from the routing table
         route -n flush
