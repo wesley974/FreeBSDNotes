@@ -55,11 +55,13 @@
     </section>
 
     <section>
-      <h2>openbsd version numbers</h2>
+      <h2>freebsd version numbers</h2>
       <ul>
-        <li>Semiannual release cycle</li>
-        <li>New release is incremented by 0.1</li>
+        <li>Fixed/Semiannual release cycle</li>
+        <li>Support for several major releases</li>
       </ul>
+        Read:
+        <a target="_blank" href="https://www.freebsd.org/releases/">Release Information</a>
     </section>
 
     <section>
@@ -116,12 +118,8 @@
     <section>
       <h2>filesystem</h2>
       <p>
-        OpenBSD use by default FFS2 (Enhanced Fast File System).
+        FreeBSD uses two filesystems out of the box: UFS and ZFS.
       </p>
-      <blockquote>
-        Read:
-        <a target="_blank" href="https://man.openbsd.org/OpenBSD-6.9/newfs">newfs(8)</a>
-      </blockquote>
     </section>
 
     <section>
@@ -184,7 +182,7 @@
       <h2>networking (set at startup)</h2>
       <h3>Example 2: configure DHCP for bge0</h3>
       <pre><code>
-        sysrc ifconfig_re0="DHCP"
+        sysrc ifconfig_bge0="DHCP"
 
       </code></pre>
       <blockquote>
@@ -226,7 +224,7 @@
       </code></pre>
 
       <blockquote>
-        Don't forget to run <code>sh /etc/netstart iwn0</code> to apply changes to running system.
+        Don't forget to run <code>sh /etc/rc.d/netif restart</code> to apply changes to running system.
       </blockquote>
     </section>
 
@@ -445,18 +443,23 @@
 
     <section>
       <h2>manage daemons, services</h2>
-      <h3>File: /etc/rc.conf.local</h3>
+      <h3>File: /etc/rc.conf, /etc/rc.conf.d/*</h3>
       <pre><code>
-        rcctl [enable|disable|start|stop|reload|restart] foobar
+        service [enable|disable|start|stop|reload|restart] foobar
 
-        # For example, to start the apmd(8) daemon for CPU scaling, you might do
-        rcctl enable apmd
-        rcctl set apmd flags -A
-        rcctl start apmd
+        # For example, to start the sshd(8) daemon for OpenSSH SSH daemon, you might do
+        service sshd enable
+        # Another way:
+        sysrc sshd_enable="YES"
+
+        service sshd start
 
       </code></pre>
       <blockquote>
-        Read: <a target="_blank" href="https://man.openbsd.org/OpenBSD-6.9/rcctl">rcctl(8)</a>
+        Read:
+        <a target="_blank" href="https://man.freebsd.org/service/8">service(8)</a>
+        <a target="_blank" href="https://man.freebsd.org/sysrc/8">sysrc(8)</a>
+        <a target="_blank" href="https://man.freebsd.org/rc.conf/5">rc.conf(5)</a>,
       </blockquote>
     </section>
 
@@ -464,7 +467,7 @@
       <h2>run a script at startup</h2>
       <h3>File: /etc/rc.local</h3>
       <blockquote>
-        Read: <a target="_blank" href="https://man.openbsd.org/OpenBSD-6.9/rc.local">rc.local(8)</a>
+        Read: <a target="_blank" href="https://man.freebsd.org/rc/8">rc(8)</a>
       </blockquote>
     </section>
 
