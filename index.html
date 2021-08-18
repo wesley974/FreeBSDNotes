@@ -197,20 +197,34 @@
       <h3>Example 3: configure wireless</h3>
       <pre><code>
         # First, see a list of available wireless networks:
-        ifconfig iwn0 scan
+        ifconfig wlan0 scan
 
       </code></pre>
       <pre><code>
-        File: /etc/hostname.iwn0
-        nwid ACCESS_POINT_NAME wpakey THE_SECRET_KEY
-        dhcp
+        File: /etc/wpa_supplicant.conf
+        eapol_version=2
+        ap_scan=1
+        fast_reauth=1
 
-        # Or, for multiple access points
-        join AT_HOME wpakey THE_SECRET_KEY
-        join AT_WORK wpakey THE_SECRETKEY
-        dhcp
+        network={
+            ssid="SSID"
+            scan_ssid=0
+            psk="KEY"
+            priority=5
+        }
+        network={
+            priority=0
+            key_mgmt=NONE
+        }
 
       </code></pre>
+
+      <pre><code>
+        # Configure wlan
+        sysrc wlans_ath0="wlan0"
+        sysrc ifconfig_wlan0="WPA DHCP"
+      </code></pre>
+
       <blockquote>
         Don't forget to run <code>sh /etc/netstart iwn0</code> to apply changes to running system.
       </blockquote>
@@ -294,17 +308,16 @@
       <h2>manage users</h2>
       <pre><code>
       # Manually
-      user [add|del|info|mod] foobar
+      pw user [add|del|mod|show|next]
 
       # Add users interactively
       adduser
 
-      # Remove users interactively
-      rmuser
-
       </code></pre>
       <blockquote>
-        Read: <a target="_blank" href="https://man.openbsd.org/OpenBSD-6.9/adduser">adduser(8)</a>
+        Read:
+        <a target="_blank" href="https://man.freebsd.org/pw/8">pw(8)</a>
+        <a target="_blank" href="https://man.freebsd.org/adduser/8">adduser(8)</a>
       </blockquote>
     </section>
 
@@ -312,17 +325,16 @@
       <h2>manage groups</h2>
       <h3>File: /etc/group</h3>
       <pre><code>
-        group [add|del|info|mod] foobar
+        pw group [add|del|mod|show|next]
 
       </code></pre>
       <blockquote>
-        Members in wheel group can use <a target="_blank" href="https://man.openbsd.org/OpenBSD-6.9/su">su(1)</a>
+        Members in wheel group can use <a target="_blank" href="https://man.freebsd.org/su/1">su(1)</a>
         to become root.
       </blockquote>
       <blockquote>
         Read:
-        <a target="_blank" href="https://man.openbsd.org/OpenBSD-6.9/group">group(8)</a>,
-        <a target="_blank" href="https://man.openbsd.org/OpenBSD-6.9/group.5">group(5)</a>
+        <a target="_blank" href="https://man.freebsd.org/group/5">group(5)</a>
       </blockquote>
     </section>
 
