@@ -247,7 +247,10 @@
       <h2>Enable PF</h2>
       <pre><code>
         service pf enable
+        sysrc pf_rules=/etc/pf
+        
         service pflog enable
+        sysrc pflog_logfile=/var/log/pflog
 
       </code></pre>
     </section>
