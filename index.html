@@ -157,8 +157,8 @@
         # Display the current configuration of network interfaces
         ifconfig
 
-        # Set DHCP for 're0' interface, on the fly
-        dhclient re0
+        # Set DHCP for 'em0' interface, on the fly
+        dhclient em0
 
         # Perform network (re)initialisation
         sh /etc/rc.d/netif restart
@@ -168,9 +168,9 @@
 
     <section>
       <h2>networking (set at startup)</h2>
-      <h3>Example 1: configure static IP address for re0</h3>
+      <h3>Example 1: configure static IP address for em0</h3>
       <pre><code>
-        sysrc ifconfig_re0="inet 192.168.0.58/24"
+        sysrc ifconfig_em0="inet 192.168.0.58/24"
 
       </code></pre>
       <blockquote>
@@ -180,9 +180,9 @@
 
     <section>
       <h2>networking (set at startup)</h2>
-      <h3>Example 2: configure DHCP for bge0</h3>
+      <h3>Example 2: configure DHCP for em0</h3>
       <pre><code>
-        sysrc ifconfig_bge0="DHCP"
+        sysrc ifconfig_em0="DHCP"
 
       </code></pre>
       <blockquote>
@@ -275,7 +275,7 @@
 
       </code></pre>
       <blockquote>
-        Read: <a target="_blank" href="https://man.openbsd.org/OpenBSD-6.9/pf.conf">pf.conf(5)</a>
+        Read: <a target="_blank" href="https://man.freebsd.org/pf.conf/5">pf.conf(5)</a>
       </blockquote>
     </section>
 
@@ -302,7 +302,7 @@
 
       </code></pre>
       <blockquote>
-        Read: <a target="_blank" href="https://man.openbsd.org/OpenBSD-6.9/pfctl">pfctl(8)</a>
+        Read: <a target="_blank" href="https://man.freebsd.org/pfctl/8">pfctl(8)</a>
       </blockquote>
     </section>
 
@@ -313,14 +313,8 @@
 
       </code></pre>
       <blockquote>
-        Read: <a target="_blank" href="https://man.openbsd.org/OpenBSD-6.9/tcpdump">tcpdump(8)</a>
+        Read: <a target="_blank" href="https://man.freebsd.org/tcpdump/1">tcpdump(8)</a>
       </blockquote>
-    </section>
-
-    <section>
-      <h2>pf user's guide</h2>
-      <p><a target="_blank" href="https://www.openbsd.org/faq/pf">https://www.openbsd.org/faq/pf</a></p>
-      <p><a target="blank" href="https://home.nuug.no/~peter/pftutorial/#1">PF and Networking Tutorial</a></p>
     </section>
 
     <section>
