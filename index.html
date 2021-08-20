@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<!--
+  Authors (in order of appearance):
+	Wesley Mouedine Assaby
+	Oleg Ginzburg
+	Egor Kuzmichev
+-->
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,11 +17,69 @@
 
 <body>
     <div class="slides">
+
+<!-- 
+Contents
+* Logo
+* History 
+* Why use FreeBSD
+* FreeBSD features
+* FreeBSD versioning
+* FreeBSD branches
+* Git repository 
+* Manual pages
+* Supported hardware
+* Installation
+* Filesystems
+* ZFS
+* Networking files
+* Networking
+* Networking at startup
+ * static IP
+ * DHCP
+ * Wireless
+* Routing  
+ * Enable PF
+ * PF ruleset example
+ * PF useful commands
+ * Debug PF with tcpdump
+* Manage users
+* Manage groups
+* Packages
+ * Install packages
+ * Get packages info
+ * Delete a package 
+* Sudo or doas
+* Firmware
+* Manage services
+ * Run script at startup
+* Updating (RELEASE)
+ * Updating (CURRENT)
+ * Security updates
+ * Vulnerables reports
+ * Update all pkg database
+* Kernel modules
+* Directory structure
+* FreeBSD kernel
+* Tune the system
+* Setting laptop hibernation
+* FreeBSD startup
+* Jails
+* Bhyve
+* Maintenance
+* Useful packages
+* Bonus
+* More help
+* FreeBSD hosting
+-->
+
+	<!-- Slide 1 -->
         <section>
             <img src="https://www.freebsd.org/gifs/releases.jpg" alt="image_from_freebsd_org">
             <h1>FreeBSD 13.0 Updated!</h1>
         </section>
 
+	<!-- Slide 2 -->
         <section>
             <h2>History</h2>
             <p>
@@ -28,6 +93,7 @@
             </p>
         </section>
 
+	<!-- Slide 3 -->
         <section>
             <h2>Why use FreeBSD</h2>
             <ul>
@@ -57,6 +123,7 @@
             </ul>
         </section>
 
+	<!-- Slide 4 -->
         <section>
             <h2>FreeBSD features</h2>
             <p>
@@ -64,6 +131,7 @@
             </p>
         </section>
 
+	<!-- Slide 5 -->
         <section>
             <h2>FreeBSD version numbers</h2>
             <ul>
@@ -74,6 +142,7 @@
             <a target="_blank" href="https://www.freebsd.org/releases/">Release Information</a>
         </section>
 
+	<!-- Slide 6 -->
         <section>
             <h2>freebsd branches</h2>
             <ul>
@@ -83,6 +152,7 @@
             </ul>
         </section>
 
+	<!-- Slide 7 -->
         <section>
             <h2>Git repository</h2>
             <p>
@@ -90,6 +160,7 @@
             </p>
         </section>
 
+	<!-- Slide 8 -->
         <section>
             <h2>Manual pages</h2>
             <pre>
@@ -103,12 +174,14 @@
             </p>
         </section>
 
+	<!-- Slide 9 -->
         <section>
             <h2>Supported hardware</h2>
             <p><a target="_blank" href="https://dmesgd.nycbug.org/index.cgi?do=index&amp;fts=FreeBSD">NYC*BUG dmesgd</a></p>
             <p><a target="_blank" href="https://bsd-hardware.info/?view=computers">Hardware for FreeBSD</a></p>
         </section>
 
+	<!-- Slide 10 -->
         <section>
             <h2>Installation</h2>
             <p>
@@ -119,13 +192,7 @@
             </blockquote>
         </section>
 
-        <section>
-            <h2>Auto-install</h2>
-            <p>
-                Use <a target="_blank" href="https://man.openbsd.org/OpenBSD-6.9/autoinstall">autoinstall(8)</a> or you can try <a target="_blank" href="http://ports.su/sysutils/upobsd">upobsd</a> package for a full unattended install/upgrade process.
-            </p>
-        </section>
-
+	<!-- Slide 12 -->
         <section>
             <h2>Filesystem</h2>
             <p>
@@ -133,11 +200,13 @@
             </p>
         </section>
 
+	<!-- Slide 13 -->
         <section>
             <h2>ZFS</h2>
             <p>...</p>
         </section>
 
+	<!-- Slide 14 -->
         <section>
             <h2>Networking files</h2>
             <table>
@@ -164,6 +233,7 @@
             </blockquote>
         </section>
 
+	<!-- Slide 15 -->
         <section>
             <h2>Networking</h2>
             <pre><code>
@@ -179,7 +249,7 @@
         </section>
 
         <section>
-            <h2>networking (set at startup)</h2>
+            <h2>Networking (set at startup)</h2>
             <h3>Example 1: configure static IP address for em0</h3>
             <pre><code>
         sysrc ifconfig_em0="inet 192.168.0.58/24"
@@ -571,7 +641,7 @@
         </section>
 
         <section>
-            <h2>openbsd filesystem</h2>
+            <h2>Directory structure</h2>
 
             <table>
                 <colgroup span="2"></colgroup>
@@ -600,97 +670,7 @@
                     </tr>
                 </tbody>
             </table>
-        </section>
-
-        <section>
-            <h2>openbsd filesystem (continued)</h2>
-            <table>
-                <tbody>
-                    <tr>
-                        <td>/etc</td>
-                        <td>System configuration files and scripts</td>
-                    </tr>
-
-                    <tr>
-                        <td>/usr/share/examples</td>
-                        <td>Example configuration files for base system daemons</td>
-                    </tr>
-
-                    <tr>
-                        <td>/etc/skel</td>
-                        <td>(dot) files for new accounts</td>
-                    </tr>
-
-                    <tr>
-                        <td>/etc/signify</td>
-                        <td>Key files used for signify(1)</td>
-                    </tr>
-                </tbody>
-            </table>
-        </section>
-
-        <section>
-            <h2>openbsd filesystem (continued)</h2>
-            <table>
-                <tbody>
-                    <tr>
-                        <td>/tmp</td>
-                        <td>Cleaned after a reboot</td>
-                    </tr>
-
-                    <tr>
-                        <td>/var/tmp</td>
-                        <td>Symbolic link to the system /tmp</td>
-                    </tr>
-
-                    <tr>
-                        <td>/var/log</td>
-                        <td>Log files</td>
-                    </tr>
-
-                    <tr>
-                        <td>/var/run</td>
-                        <td>pid, socket files, utmp, dmesg.boot</td>
-                    </tr>
-
-                </tbody>
-            </table>
-        </section>
-
-        <section>
-            <h2>openbsd filesystem (continued)</h2>
-            <table>
-                <tbody>
-                    <tr>
-                        <td>/var/db</td>
-                        <td>Database files</td>
-                    </tr>
-
-                    <tr>
-                        <td>/var/www</td>
-                        <td>Configuration files for httpd(8)</td>
-                    </tr>
-
-                    <tr>
-                        <td>/var/www/htdocs</td>
-                        <td>Web repository for httpd(8)</td>
-                    </tr>
-
-                    <tr>
-                        <td>/usr/local</td>
-                        <td>Third-party software goes here</td>
-                    </tr>
-
-                    <tr>
-                        <td>/usr/src</td>
-                        <td>BSD and/or local source files</td>
-                    </tr>
-
-                </tbody>
-            </table>
-            <blockquote>
-                Read: <a target="_blank" href="https://man.openbsd.org/OpenBSD-6.9/hier">hier(7)</a>
-            </blockquote>
+	    See also: hier(7)
         </section>
 
         <section>
