@@ -432,12 +432,28 @@ Contents
                 <a target="_blank" href="https://man.freebsd.org/group/5">group(5)</a>
             </blockquote>
         </section>
-        
+
         <section>
             <h2>Install packages</h2>
             <pre><code>
-        # By default, the /etc/installurl file already contains an OpenBSD mirror server URL
-        https://cdn.openbsd.org/pub/OpenBSD
+        # Official support for two branches: quarterly or rolling (latest).
+        By default, the /etc/pkg/FreeBSD.conf file already contains an FreeBSD quarterly mirror server URL
+        url: "pkg+http://pkg.FreeBSD.org/${ABI}/latest",
+
+        You can switch it to the last one:
+        <pre><code>
+           mkdir -p /usr/local/etc/pkg/repos
+           cat &gt; /usr/local/etc/pkg/repos/FreeBSD.conf &lt;&lt;EOF
+             FreeBSD: { enabled: no }
+             FreeBSD-latest: {
+               url: "pkg+http://pkg.FreeBSD.org/${ABI}/latest",
+               mirror_type: "srv",
+               signature_type: "fingerprints",
+               fingerprints: "/usr/share/keys/pkg",
+               enabled: yes
+             }
+           EOF
+        </code></pre>
 
         # Search for packages
         pkg search foobar
@@ -446,17 +462,15 @@ Contents
         pkg install squid
 
         # Update packages
-        pkg update
+        pkg upgrade
 
-      </code></pre>
-            <blockquote>
-                Look in <code>/usr/local/share/doc/pkg-readmes</code> for extra documentation.
-            </blockquote>
+        </code></pre>
             <blockquote>
                 Read:
-                <a target="_blank" href="https://man.openbsd.org/pkg-info">pkg_info(8)</a>,
-                <a target="_blank" href="https://man.openbsd.org/pkg-install">pkg_add(8)</a>,
-                <a target="_blank" href="https://man.openbsd.org/installurl">installurl(5)</a>
+                <a target="_blank" href="https://man.freebsd.org/pkg.conf/5">pkg.conf(5)</a>,
+                <a target="_blank" href="https://man.freebsd.org/pkg/8">pkg(8)</a>,
+                <a target="_blank" href="https://man.freebsd.org.org/pkg-install">pkg-install(8)</a>,
+                <a target="_blank" href="https://wiki.freebsd.org/PkgPrimer">PkgPrimer)</a>
             </blockquote>
         </section>
 
@@ -470,15 +484,9 @@ Contents
         pkg info -l foobar
 
         # View install-message for a specific package
-        pkg_info -D foobar
+        pkg info -D foobar
 
-     </code></pre>
-            <blockquote>
-                Read:
-                <a target="_blank" href="https://man.freebsd.org/pkg-info">pkg-info(8)</a>,
-                <a target="_blank" href="https://man.freebsd.org/packages">pkg(8)</a>
-            </blockquote>
-        </section>
+        </code></pre>
 
         <section>
             <h2>packages (continued)</h2>
@@ -493,7 +501,7 @@ Contents
         pkg autoremove
 
         # Delete all packages
-        pkk delete -a
+        pkg delete -a
 
       </code></pre>
             <blockquote>
