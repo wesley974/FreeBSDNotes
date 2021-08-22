@@ -342,7 +342,7 @@ Contents
         service pflog enable
         sysrc pflog_logfile=/var/log/pflog
         
-        # create your /etc/pf.conf, then
+        # create your /etc/pf.conf, then start pf
         service pf start
 
       </code></pre>
@@ -352,9 +352,10 @@ Contents
             <h2>PF ruleset sample</h2>
             <pre><code>
         File: /etc/pf.conf
-        # Add you network card to egress group
+        # Add your network card to egress group
         # ifconfig em0 group egress
-        #
+        # or sysrc ifconfig_em0+="group egress"
+	#
         # Protect a laptop (allow only ping/ssh from anywhere)
 
         set skip on lo
@@ -440,12 +441,28 @@ Contents
                 <a target="_blank" href="https://man.freebsd.org/group/5">group(5)</a>
             </blockquote>
         </section>
-        
+
         <section>
             <h2>Install packages</h2>
             <pre><code>
-        # By default, the /etc/installurl file already contains an OpenBSD mirror server URL
-        https://cdn.openbsd.org/pub/OpenBSD
+        # Official support for two branches: quarterly or rolling (latest).
+        By default, the /etc/pkg/FreeBSD.conf file already contains an FreeBSD quarterly mirror server URL
+        url: "pkg+http://pkg.FreeBSD.org/${ABI}/latest",
+
+        You can switch it to the last one:
+        <pre><code>
+           mkdir -p /usr/local/etc/pkg/repos
+           cat &gt; /usr/local/etc/pkg/repos/FreeBSD.conf &lt;&lt;EOF
+             FreeBSD: { enabled: no }
+             FreeBSD-latest: {
+               url: "pkg+http://pkg.FreeBSD.org/${ABI}/latest",
+               mirror_type: "srv",
+               signature_type: "fingerprints",
+               fingerprints: "/usr/share/keys/pkg",
+               enabled: yes
+             }
+           EOF
+        </code></pre>
 
         # Search for packages
         pkg search foobar
@@ -454,17 +471,15 @@ Contents
         pkg install squid
 
         # Update packages
-        pkg update
+        pkg upgrade
 
-      </code></pre>
-            <blockquote>
-                Look in <code>/usr/local/share/doc/pkg-readmes</code> for extra documentation.
-            </blockquote>
+        </code></pre>
             <blockquote>
                 Read:
-                <a target="_blank" href="https://man.openbsd.org/pkg-info">pkg_info(8)</a>,
-                <a target="_blank" href="https://man.openbsd.org/pkg-install">pkg_add(8)</a>,
-                <a target="_blank" href="https://man.openbsd.org/installurl">installurl(5)</a>
+                <a target="_blank" href="https://man.freebsd.org/pkg.conf/5">pkg.conf(5)</a>,
+                <a target="_blank" href="https://man.freebsd.org/pkg/8">pkg(8)</a>,
+                <a target="_blank" href="https://man.freebsd.org.org/pkg-install/8">pkg-install(8)</a>,
+                <a target="_blank" href="https://wiki.freebsd.org/PkgPrimer">PkgPrimer</a>
             </blockquote>
         </section>
 
@@ -478,15 +493,9 @@ Contents
         pkg info -l foobar
 
         # View install-message for a specific package
-        pkg_info -D foobar
+        pkg info -D foobar
 
-     </code></pre>
-            <blockquote>
-                Read:
-                <a target="_blank" href="https://man.freebsd.org/pkg-info">pkg-info(8)</a>,
-                <a target="_blank" href="https://man.freebsd.org/packages">pkg(8)</a>
-            </blockquote>
-        </section>
+        </code></pre>
 
         <section>
             <h2>packages (continued)</h2>
@@ -501,7 +510,7 @@ Contents
         pkg autoremove
 
         # Delete all packages
-        pkk delete -a
+        pkg delete -a
 
       </code></pre>
             <blockquote>
@@ -904,7 +913,7 @@ Contents
 
         <section>
             <h2>presentations &amp; papers </h2>
-            <p><a target="_blank" href="https://www.openbsd.org/events.html">https://www.openbsd.org/events.html</a></p>
+            <p><a target="_blank" href="https://papers.freebsd.org">https://papers.freebsd.org</a></p>
         </section>
 
         <section>
