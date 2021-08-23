@@ -82,15 +82,6 @@
             <a target="_blank" href="https://www.freebsd.org/releases/">Release Information</a>
         </section>
 
-        <section id="branches">
-            <h2>freebsd branches</h2>
-            <ul>
-                <li>RELEASE, just a snapshot of -stable branch</li>
-                <li>STABLE, every 2 to 3 years, a stable branch from the -current branch</li>
-                <li>CURRENT, development branch (head tagged)</li>
-            </ul>
-        </section>
-
         <section id="git">
             <h2>Git repository</h2>
             <p>
@@ -101,15 +92,13 @@
             </p>
         </section>
 
-        <section id="man">
-            <h2>Manual pages</h2>
-            <code>
-                # How to read a man page, for example foo(5) ?
-                man 5 foo
-            </code>
-            <p>
-                Or view it on your browser at: <a target="_blank" href="https://man.freebsd.org">https://man.freebsd.org</a>
-            </p>
+        <section id="branches">
+            <h2>freebsd branches</h2>
+            <ul>
+                <li>-RELEASE, just a snapshot of -stable branch</li>
+                <li>-STABLE, every 2 to 3 years, a stable branch from the -current branch</li>
+                <li>-CURRENT, development branch (head tagged)</li>
+            </ul>
         </section>
 
         <section id="hardware">
@@ -128,6 +117,12 @@
             </blockquote>
         </section>
 
+        <section id="firmware">
+            <h2>Non-free firmware packages</h2>
+            <p>Some of firmware distributed by ports collection.</p>
+            <p>For graphics-related issues see: <a href="https://github.com/FreeBSDDesktop">FreeBSDDesktop</a> project</p>
+        </section>
+
         <section id="filesystems">
             <h2>Filesystem</h2>
             <p>
@@ -140,13 +135,65 @@
             <p>...</p>
         </section>
 
+        <section id="man">
+            <h2>Manual pages</h2>
+            <code>
+                # How to read a man page, for example foo(5) ?
+                man 5 foo
+            </code>
+            <p>
+                Or view it on your browser at: <a target="_blank" href="https://man.freebsd.org">https://man.freebsd.org</a>
+            </p>
+        </section>        
+
         <section id="rc.conf">
             <h2>Configuring FreeBSD</h2>
             <p>/etc/rc.conf is key-value file, by which FreeBSD if generally configured.</p>
             <p>rc.conf is read by /etc/rc during <a href="#startup">startup process</a>.
         </section>
 
-        <section id="networking_files">
+        <section id="rc.local">
+            <h2>Run a script at startup</h2>
+            <h3>File: /etc/rc.local</h3>
+            <blockquote>
+                Read: <a target="_blank" href="https://man.freebsd.org/rc/8">rc(8)</a>
+            </blockquote>
+        </section>
+
+        <section id="services">
+            <h2>Manage services</h2>
+            <p>Files: /etc/rc.conf, /etc/rc.conf.d/*</p>
+            <p>Service startup scripts are located in /etc/rc.d/* and /usr/local/etc/rc.d/*</p>
+            <code>
+                service [enable|disable|start|stop|reload|restart] foobar
+
+                # For example, to start the sshd(8) daemon for OpenSSH SSH daemon, you might do
+                service sshd enable
+                service sshd start
+            </code>
+            <blockquote>
+                Read:
+                <a target="_blank" href="https://man.freebsd.org/service/8">service(8)</a>
+                <a target="_blank" href="https://man.freebsd.org/sysrc/8">sysrc(8)</a>
+                <a target="_blank" href="https://man.freebsd.org/rc.conf/5">rc.conf(5)</a>,
+            </blockquote>
+        </section>
+
+        <section id="networking">
+            <h2>Networking</h2>
+            <code>
+            # Display the current configuration of network interfaces
+            ifconfig
+
+            # Set DHCP for 'em0' interface, on the fly
+            dhclient em0
+
+            # Perform network (re)initialisation
+            sh /etc/rc.d/netif restart
+            </code>
+        </section>
+
+        <section id="networking-files">
             <h2>Networking files</h2>
             <table>
                 <tbody>
@@ -172,21 +219,7 @@
             </blockquote>
         </section>
 
-        <section id="networking">
-            <h2>Networking</h2>
-            <code>
-            # Display the current configuration of network interfaces
-            ifconfig
-
-            # Set DHCP for 'em0' interface, on the fly
-            dhclient em0
-
-            # Perform network (re)initialisation
-            sh /etc/rc.d/netif restart
-            </code>
-        </section>
-
-        <section id="networking_startup">
+        <section id="networking-static-ip">
             <h2>Networking (set at startup)</h2>
             <h3>Example 1: configure static IP address for em0</h3>
             <code>
@@ -197,7 +230,7 @@
             </blockquote>
         </section>
 
-        <section id="networking_startup_1">
+        <section id="networking-dhcp>
             <h2>networking (set at startup)</h2>
             <h3>Example 2: configure DHCP for em0</h3>
             <code>
@@ -208,7 +241,7 @@
             </blockquote>
         </section>
 
-        <section id="networking_startup_2>
+        <section id="networking-wireless">
             <h2>networking (set at startup)</h2>
             <h3>Example 3: configure wireless</h3>
             <code>
@@ -242,123 +275,6 @@
                 <blockquote>
                     Don't forget to run <code>sh /etc/rc.d/netif restart</code> to apply changes to running system.
                 </blockquote>
-        </section>
-
-        <section id="routing">
-            <h2>Routing</h2>
-            <code>
-            # Show the routing table (ipv4)
-            netstat -rn4
-
-            # Show the routing table (ipv6)
-            netstat -rn6
-
-            # Delete all gateway entries from the routing table
-            route -n flush
-            </code>
-        </section>
-
-        <section id="pf">
-            <h2>Enable PF</h2>
-            <code>
-            service pf enable
-            sysrc pf_rules=/etc/pf.conf
-            
-            service pflog enable
-            sysrc pflog_logfile=/var/log/pflog
-            
-            # create your /etc/pf.conf, then start pf
-            service pf start
-            </code>
-        </section>
-
-        <section id="pf_ruleset">
-            <h2>PF ruleset sample</h2>
-            <code>
-            File: /etc/pf.conf
-            # Add your network card to egress group
-            # ifconfig em0 group egress
-            # or sysrc ifconfig_em0+="group egress"
-        	#
-            # Protect a laptop (allow only ping/ssh from anywhere)
-
-            set skip on lo
-            block log all
-            pass in on egress inet proto icmp all icmp-type echoreq
-            pass in on egress inet proto tcp from any to any port ssh
-            pass out
-            </code>
-            <blockquote>
-                Read: <a target="_blank" href="https://man.freebsd.org/pf.conf/5">pf.conf(5)</a>
-            </blockquote>
-        </section>
-
-        <section id="pf_commands">
-            <h2>pf (packet filter)</h2>
-
-            <h3>(Useful commands)</h3>
-
-            <code>
-            # Disable PF
-            pfctl -d
-            
-            # Check your rules
-            pfctl -nf /etc/pf.conf
-
-            # Enable PF and load the rules
-            pfctl -ef /etc/pf.conf
-
-            # Just load the rules (apply changes)
-            pfctl -f /etc/pf.conf
-
-            # View the loaded rules
-            pfctl -s rules
-            </code>
-            <blockquote>
-                Read: <a target="_blank" href="https://man.freebsd.org/pfctl/8">pfctl(8)</a>
-            </blockquote>
-        </section>
-
-        <section id="pf-tcpdump">
-            <h2>debug pf with tcpdump</h2>
-            <code>
-                tcpdump -nettti pflog0
-            </code>
-            <blockquote>
-                Read: <a target="_blank" href="https://man.freebsd.org/tcpdump/1">tcpdump(8)</a>
-            </blockquote>
-        </section>
-
-        <section id="users">
-            <h2>Manage users</h2>
-            <code>
-                # Manually
-                pw user [add|del|mod|show|next]
-
-                # Add users interactively
-                adduser
-            </code>
-            <blockquote>
-                Read:
-                <a target="_blank" href="https://man.freebsd.org/pw/8">pw(8)</a>
-                <a target="_blank" href="https://man.freebsd.org/adduser/8">adduser(8)</a>
-            </blockquote>
-        </section>
-
-        <section id="groups">
-            <h2>manage groups</h2>
-            <h3>File: /etc/group</h3>
-            <code>
-                pw group [add|del|mod|show|next]
-            </code>
-            <blockquote>
-                Members in wheel group can use <a target="_blank" href="https://man.freebsd.org/su/1">su(1)</a>
-                to become root.
-            </blockquote>
-            <blockquote>
-                Read:
-                <a target="_blank" href="https://man.freebsd.org/group/5">group(5)</a>
-            </blockquote>
         </section>
 
         <section id="packages">
@@ -435,7 +351,7 @@
             </blockquote>
         </section>
 
-        <section id="sudo-doas">
+        <section id="packages-sudo-doas">
             <h2>sudo(1) or doas(1)</h2>
             <p>Neither sudo(1) nor doas(1) comes along base system. You are free to choose one from packages.</p>
             <code>
@@ -460,35 +376,180 @@
             </blockquote>
         </section>
 
-        <section id="firmware">
-            <h2>Non-free firmware packages</h2>
-            <p>Some of firmware distributed by ports collection.</p>
-            <p>For graphics-related issues see: <a href="https://github.com/FreeBSDDesktop">FreeBSDDesktop</a> project</p>
+        <section id="pkg-audit">
+            <h1>See reports about vulnerable software packages</h1>
+            <code>
+                # Execute the following command:
+                pkg audit -F
+
+                # See a list of vulnerable packages, run:
+                pkg audit
+            </code>
         </section>
 
-        <section id="services">
-            <h2>Manage services</h2>
-            <h3>File: /etc/rc.conf, /etc/rc.conf.d/*</h3>
+        <section id="pkg-update">
+            <h1>Update all FreeBSD packages database</h1>
             <code>
-                service [enable|disable|start|stop|reload|restart] foobar
+                pkg update
+            </code>
+        </section>
 
-                # For example, to start the sshd(8) daemon for OpenSSH SSH daemon, you might do
-                service sshd enable
-                service sshd start
+        <section id="packages-useful">
+            <h2>some useful packages</h2>
+            <table>
+                <tbody>
+                    <tr>
+                        <td>screenfetch</td>
+                        <td>Display system information in the terminal</td>
+                    </tr>
+                    <tr>
+                        <td>w3m</td>
+                        <td>Text-based web browser</td>
+                    </tr>
+                    <tr>
+                        <td>noice</td>
+                        <td>
+                            minimalistic file browser
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="packages-useful-1">
+            <h2>some useful packages (continued)</h2>
+            <table>
+                <tbody>
+                    <tr>
+                        <td>pstree</td>
+                        <td>List processes as a tree</td>
+                    </tr>
+                    <tr>
+                        <td>tmate</td>
+                        <td>Share your terminal on the web without open any ports</td>
+                    </tr>
+                    <tr>
+                        <td>testdisk</td>
+                        <td>Scan and repair disk partitions</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>        
+
+        <section id="routing">
+            <h2>Routing</h2>
+            <code>
+            # Show the routing table (ipv4)
+            netstat -rn4
+
+            # Show the routing table (ipv6)
+            netstat -rn6
+
+            # Delete all gateway entries from the routing table
+            route -n flush
+            </code>
+        </section>
+
+        <section id="routing-pf">
+            <h2>Enable PF</h2>
+            <code>
+            service pf enable
+            sysrc pf_rules=/etc/pf.conf
+            
+            service pflog enable
+            sysrc pflog_logfile=/var/log/pflog
+            
+            # create your /etc/pf.conf, then start pf
+            service pf start
+            </code>
+        </section>
+
+        <section id="routing-pf-ruleset">
+            <h2>PF ruleset sample</h2>
+            <code>
+            File: /etc/pf.conf
+            # Add your network card to egress group
+            # ifconfig em0 group egress
+            # or sysrc ifconfig_em0+="group egress"
+        	#
+            # Protect a laptop (allow only ping/ssh from anywhere)
+
+            set skip on lo
+            block log all
+            pass in on egress inet proto icmp all icmp-type echoreq
+            pass in on egress inet proto tcp from any to any port ssh
+            pass out
             </code>
             <blockquote>
-                Read:
-                <a target="_blank" href="https://man.freebsd.org/service/8">service(8)</a>
-                <a target="_blank" href="https://man.freebsd.org/sysrc/8">sysrc(8)</a>
-                <a target="_blank" href="https://man.freebsd.org/rc.conf/5">rc.conf(5)</a>,
+                Read: <a target="_blank" href="https://man.freebsd.org/pf.conf/5">pf.conf(5)</a>
             </blockquote>
         </section>
 
-        <section id="rc.local">
-            <h2>Run a script at startup</h2>
-            <h3>File: /etc/rc.local</h3>
+        <section id="routing-pf-commands">
+            <h2>pf (packet filter)</h2>
+
+            <h3>(Useful commands)</h3>
+
+            <code>
+            # Disable PF
+            pfctl -d
+            
+            # Check your rules
+            pfctl -nf /etc/pf.conf
+
+            # Enable PF and load the rules
+            pfctl -ef /etc/pf.conf
+
+            # Just load the rules (apply changes)
+            pfctl -f /etc/pf.conf
+
+            # View the loaded rules
+            pfctl -s rules
+            </code>
             <blockquote>
-                Read: <a target="_blank" href="https://man.freebsd.org/rc/8">rc(8)</a>
+                Read: <a target="_blank" href="https://man.freebsd.org/pfctl/8">pfctl(8)</a>
+            </blockquote>
+        </section>
+
+        <section id="routing-pf-tcpdump">
+            <h2>debug pf with tcpdump</h2>
+            <code>
+                tcpdump -nettti pflog0
+            </code>
+            <blockquote>
+                Read: <a target="_blank" href="https://man.freebsd.org/tcpdump/1">tcpdump(8)</a>
+            </blockquote>
+        </section>
+
+        <section id="users">
+            <h2>Manage users</h2>
+            <code>
+                # Manually
+                pw user [add|del|mod|show|next]
+
+                # Add users interactively
+                adduser
+            </code>
+            <blockquote>
+                Read:
+                <a target="_blank" href="https://man.freebsd.org/pw/8">pw(8)</a>
+                <a target="_blank" href="https://man.freebsd.org/adduser/8">adduser(8)</a>
+            </blockquote>
+        </section>
+
+        <section id="groups">
+            <h2>manage groups</h2>
+            <h3>File: /etc/group</h3>
+            <code>
+                pw group [add|del|mod|show|next]
+            </code>
+            <blockquote>
+                Members in wheel group can use <a target="_blank" href="https://man.freebsd.org/su/1">su(1)</a>
+                to become root.
+            </blockquote>
+            <blockquote>
+                Read:
+                <a target="_blank" href="https://man.freebsd.org/group/5">group(5)</a>
             </blockquote>
         </section>
 
@@ -516,24 +577,6 @@
                 <a target="_blank" href="https://man.freebsd.org/freebsd-update/8">freebsd-update(8)</a>,
                 <a target="_blank" href="https://man.freebsd.org/freebsd-update.conf/5">freebsd-update.conf(5)</a>,
             </blockquote>
-        </section>
-
-        <section id="pkg-audit">
-            <h1>See reports about vulnerable software packages</h1>
-            <code>
-                # Execute the following command:
-                pkg audit -F
-
-                # See a list of vulnerable packages, run:
-                pkg audit
-            </code>
-        </section>
-
-        <section id="pkg-update">
-            <h1>Update all FreeBSD packages database</h1>
-            <code>
-                pkg update
-            </code>
         </section>
 
         <section id="kld">
@@ -593,10 +636,9 @@
 	       See also: hier(7)
         </section>
 
-        <section id="kernels">
-            <h2>openbsd kernels</h2>
-            <p><strong>/bsd</strong><br>
-                Kernel executable (the operating system loaded into memory at boot-time).</p>
+        <section id="kernel">
+            <h2>FreeBSD kernels</h2>
+            <p>Kernel and modules are located in /boot/kernel (the operating system loaded into memory at boot-time).</p>
             <blockquote>
                 In case of multiple processors, <a target="blank" href="https://cvsweb.openbsd.org/src/distrib/miniroot/install.sub">installer</a> will rename /bsd to /bsd.sp and finally /bsd.mp to /bsd
             </blockquote>
@@ -704,48 +746,6 @@
                 <a target="_blank" href="https://man.openbsd.org/OpenBSD-6.9/ktrace">ktrace(1)</a>,
                 <a target="_blank" href="https://man.openbsd.org/OpenBSD-6.9/kdump">kdump(1)</a>
             </blockquote>
-        </section>
-
-        <section id="useful-packages">
-            <h2>some useful packages</h2>
-            <table>
-                <tbody>
-                    <tr>
-                        <td>screenfetch</td>
-                        <td>Display system information in the terminal</td>
-                    </tr>
-                    <tr>
-                        <td>w3m</td>
-                        <td>Text-based web browser</td>
-                    </tr>
-                    <tr>
-                        <td>noice</td>
-                        <td>
-                            minimalistic file browser
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </section>
-
-        <section id="useful-packages-1">
-            <h2>some useful packages (continued)</h2>
-            <table>
-                <tbody>
-                    <tr>
-                        <td>pstree</td>
-                        <td>List processes as a tree</td>
-                    </tr>
-                    <tr>
-                        <td>tmate</td>
-                        <td>Share your terminal on the web without open any ports</td>
-                    </tr>
-                    <tr>
-                        <td>testdisk</td>
-                        <td>Scan and repair disk partitions</td>
-                    </tr>
-                </tbody>
-            </table>
         </section>
 
         <section id="bonus">
