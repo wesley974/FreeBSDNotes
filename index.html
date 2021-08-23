@@ -17,6 +17,8 @@
 
 <body class="slides reveal">
 
+        <!-- General info -->
+
         <section id="logo">
             <img src="FREEBSD_Logo_Horiz_Pos_RGB.png" alt="FreeBSD">
             <h1>FreeBSD 13.0 Updated!</h1>
@@ -107,6 +109,8 @@
             <p><a target="_blank" href="https://bsd-hardware.info/?view=computers">Hardware for FreeBSD</a></p>
         </section>
 
+        <!-- Base system -->
+
         <section id="installation">
             <h2>Installation</h2>
             <p>
@@ -115,6 +119,44 @@
             <blockquote>
                 Get more information: <a target="_blank" href="https://docs.freebsd.org/en/books/handbook/bsdinstall/">https://docs.freebsd.org/en/books/handbook/bsdinstall/</a>
             </blockquote>
+        </section>
+
+        <section id="startup">
+            <h2>Full FreeBSD Startup described!</h2>
+            <p>...</p>
+        </section>
+
+        <section id="hier">
+            <h2>Directory structure</h2>
+
+            <table>
+                <colgroup span="2"></colgroup>
+                <tbody>
+                    <tr>
+                        <th colspan="2" scope="colgroup">The most important to know!</th>
+                    </tr>
+                    <tr>
+                        <td>/</td>
+                        <td>Root directory</td>
+                    </tr>
+
+                    <tr>
+                        <td>/home</td>
+                        <td>User home directories</td>
+                    </tr>
+
+                    <tr>
+                        <td>/root</td>
+                        <td>Default home directory for the superuser</td>
+                    </tr>
+
+                    <tr>
+                        <td>/mnt</td>
+                        <td>A temporary mount point</td>
+                    </tr>
+                </tbody>
+            </table>
+           See also: hier(7)
         </section>
 
         <section id="firmware">
@@ -178,6 +220,8 @@
                 <a target="_blank" href="https://man.freebsd.org/rc.conf/5">rc.conf(5)</a>,
             </blockquote>
         </section>
+
+        <!-- Networking -->
 
         <section id="networking">
             <h2>Networking</h2>
@@ -277,7 +321,9 @@
                 </blockquote>
         </section>
 
-        <section id="packages">
+        <!-- Packages -->
+
+        <section id="pkg">
             <h2>Install packages</h2>
             <code>
                 # Official support for two branches: quarterly or rolling (latest).
@@ -317,7 +363,7 @@
             </blockquote>
         </section>
 
-        <section id="packages-1">
+        <section id="pkg-1">
             <h2>Packages</h2>
             <code>
                 # List packages installed
@@ -331,7 +377,7 @@
             </code>
         </section>
 
-        <section id="packages-2">
+        <section id="pkg-2">
             <h2>packages (continued)</h2>
             <code>
                 # Delete a Package
@@ -351,7 +397,7 @@
             </blockquote>
         </section>
 
-        <section id="packages-sudo-doas">
+        <section id="pkg-sudo-doas">
             <h2>sudo(1) or doas(1)</h2>
             <p>Neither sudo(1) nor doas(1) comes along base system. You are free to choose one from packages.</p>
             <code>
@@ -377,7 +423,7 @@
         </section>
 
         <section id="pkg-audit">
-            <h1>See reports about vulnerable software packages</h1>
+            <h2>See reports about vulnerable software packages</h2>
             <code>
                 # Execute the following command:
                 pkg audit -F
@@ -388,13 +434,13 @@
         </section>
 
         <section id="pkg-update">
-            <h1>Update all FreeBSD packages database</h1>
+            <h2>Update all FreeBSD packages database</h2>
             <code>
                 pkg update
             </code>
         </section>
 
-        <section id="packages-useful">
+        <section id="pkg-useful">
             <h2>some useful packages</h2>
             <table>
                 <tbody>
@@ -416,7 +462,7 @@
             </table>
         </section>
 
-        <section id="packages-useful-1">
+        <section id="pkg-useful-1">
             <h2>some useful packages (continued)</h2>
             <table>
                 <tbody>
@@ -434,7 +480,9 @@
                     </tr>
                 </tbody>
             </table>
-        </section>        
+        </section>
+
+        <!-- Routing -->
 
         <section id="routing">
             <h2>Routing</h2>
@@ -521,6 +569,8 @@
             </blockquote>
         </section>
 
+        <!-- Administration -->
+
         <section id="users">
             <h2>Manage users</h2>
             <code>
@@ -579,20 +629,6 @@
             </blockquote>
         </section>
 
-        <section id="kld">
-            <h1>Kernel modules</h1>
-            <code>
-                # List kernel modules loaded
-                kldstat
-                
-                # Load a kernel module
-                kldload pf
-                
-                # Unload a kernel module
-                kldunload pf
-            </code>
-        </section>
-
         <section id="freebsd-upgrade">
             <h2>upgrade openbsd</h2>
             <p>
@@ -601,92 +637,6 @@
             <blockquote>
                 <a target="_blank" href="https://man.openbsd.org/OpenBSD-6.9/sysupgrade">sysupgrade(8)</a>, is a utility to upgrade OpenBSD to the next release or a new snapshot.
             </blockquote>
-        </section>
-
-        <section id="hier">
-            <h2>Directory structure</h2>
-
-            <table>
-                <colgroup span="2"></colgroup>
-                <tbody>
-                    <tr>
-                        <th colspan="2" scope="colgroup">The most important to know!</th>
-                    </tr>
-                    <tr>
-                        <td>/</td>
-                        <td>Root directory</td>
-                    </tr>
-
-                    <tr>
-                        <td>/home</td>
-                        <td>User home directories</td>
-                    </tr>
-
-                    <tr>
-                        <td>/root</td>
-                        <td>Default home directory for the superuser</td>
-                    </tr>
-
-                    <tr>
-                        <td>/mnt</td>
-                        <td>A temporary mount point</td>
-                    </tr>
-                </tbody>
-            </table>
-	       See also: hier(7)
-        </section>
-
-        <section id="kernel">
-            <h2>FreeBSD kernels</h2>
-            <p>Kernel and modules are located in /boot/kernel (the operating system loaded into memory at boot-time).</p>
-            <blockquote>
-                In case of multiple processors, <a target="blank" href="https://cvsweb.openbsd.org/src/distrib/miniroot/install.sub">installer</a> will rename /bsd to /bsd.sp and finally /bsd.mp to /bsd
-            </blockquote>
-        </section>
-
-        <section id="tune">
-            <h2>tune the system</h2>
-            <p>
-                <a target="_blank" href="https://man.openbsd.org/OpenBSD-6.9/sysctl.conf">sysctl.conf(5)</a> sysctl variables to set at system startup<br>
-                <a target="_blank" href="https://man.openbsd.org/OpenBSD-6.9/sysctl">sysctl(8)</a> get or set kernel state<br>
-                &amp; <br>
-                <a target="_blank" href="https://man.openbsd.org/OpenBSD-6.9/config">config(8)</a> modify a kernel<br>
-            </p>
-        </section>
-
-        <section id="laptop">
-            <h2>setting laptop hibernation (sysctl)</h2>
-            <table>
-                <tbody>
-                    <tr>
-                        <td>machdep.lidaction=0</td>
-                        <td>do nothing</td>
-                    </tr>
-                    <tr>
-                        <td>machdep.lidaction=1</td>
-                        <td>suspend</td>
-                    </tr>
-                    <tr>
-                        <td>machdep.lidaction=2</td>
-                        <td>hibernate</td>
-                    </tr>
-                </tbody>
-            </table>
-        </section>
-
-        <section id="startup">
-            <h2>Full FreeBSD Startup described!</h2>
-            <p>...</p>
-        </section>
-
-        <section id="jails">
-            <h2>Jails</h2>
-			<p>...</p>
-        </section>
-
-        <section id="bhyve">
-            <h2>Bhyve</h2>
-			<p>...</p>
         </section>
 
         <section id="maintenance">
@@ -726,6 +676,80 @@
             </blockquote>
         </section>
 
+        <!-- Kernel -->
+        
+        <section id="kernel">
+            <h2>FreeBSD kernels</h2>
+            <p>Kernel and modules are located in /boot/kernel (the operating system loaded into memory at boot-time).</p>
+            <blockquote>
+                In case of multiple processors, <a target="blank" href="https://cvsweb.openbsd.org/src/distrib/miniroot/install.sub">installer</a> will rename /bsd to /bsd.sp and finally /bsd.mp to /bsd
+            </blockquote>
+        </section>
+
+        <section id="kld">
+            <h1>Kernel modules</h1>
+            <code>
+                # List kernel modules loaded
+                kldstat
+                
+                # Load a kernel module
+                kldload pf
+                
+                # Unload a kernel module
+                kldunload pf
+            </code>
+        </section>
+
+        <section id="tune">
+            <h2>tune the system</h2>
+            <p>
+                <a target="_blank" href="https://man.openbsd.org/OpenBSD-6.9/sysctl.conf">sysctl.conf(5)</a> sysctl variables to set at system startup<br>
+                <a target="_blank" href="https://man.openbsd.org/OpenBSD-6.9/sysctl">sysctl(8)</a> get or set kernel state<br>
+                &amp; <br>
+                <a target="_blank" href="https://man.openbsd.org/OpenBSD-6.9/config">config(8)</a> modify a kernel<br>
+            </p>
+        </section>
+
+        <!-- Desktop -->
+
+        <section id="laptop">
+            <h2>setting laptop hibernation (sysctl)</h2>
+            <table>
+                <tbody>
+                    <tr>
+                        <td>machdep.lidaction=0</td>
+                        <td>do nothing</td>
+                    </tr>
+                    <tr>
+                        <td>machdep.lidaction=1</td>
+                        <td>suspend</td>
+                    </tr>
+                    <tr>
+                        <td>machdep.lidaction=2</td>
+                        <td>hibernate</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="de">
+            <h2>Desktop environment</h2>
+        </section>
+
+        <!-- Embedded? -->
+
+        <!-- Virtualization -->
+
+        <section id="jails">
+            <h2>Jails</h2>
+			<p>...</p>
+        </section>
+
+        <section id="bhyve">
+            <h2>Bhyve</h2>
+			<p>...</p>
+        </section>
+
         <section id="ktrace">
             <h2>ktrace/kdump sample usage</h2>
             <table>
@@ -747,6 +771,8 @@
                 <a target="_blank" href="https://man.openbsd.org/OpenBSD-6.9/kdump">kdump(1)</a>
             </blockquote>
         </section>
+
+        <!-- Extra -->
 
         <section id="bonus">
             <h2>Bonus</h2>
@@ -782,6 +808,7 @@
             <p><a target="_blank" href="https://arpnetworks.com"><img src="images/arp.png" alt="ARP Networks logo"></a></p>
             <a target="_blank" href="https://openbsd.amsterdam"><img src="images/obsd-ams.png" alt="OpenBSD Amsterdam logo"></a>
         </section>
+        
 </body>
 
 </html>
