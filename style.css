@@ -53,6 +53,7 @@ section {
 
 .reveal code {
   font-family: monospace;
+  white-space: pre;
 }
 
 .reveal h1 {  
@@ -163,7 +164,7 @@ li span, tr td span, tr td code, p strong {
   border-bottom: none;
 }
 
-.reveal pre code {
+.reveal code {
   padding-left: 2em;
   margin: 20px auto;
   text-align: left;
