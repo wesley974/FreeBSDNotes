@@ -27,8 +27,8 @@
         <section id="history">
             <h2>History</h2>
             <p>
-                <a href="http://people.freebsd.org/~jkh/" target="_blank">Jordan K. Hubbard</a>,
-                Nate Williams
+                <a href="http://people.freebsd.org/~jkh/" target="_blank">Jordan K. Hubbard</a>, 
+		<a href="https://www.linkedin.com/in/nate-williams-7492381">Nate Williams</a>
                 and <a href="https://people.freebsd.org/~rgrimes/" target="_blank">Rodney Grimes</a>
                 are the co-founder of the FreeBSD project.
             </p>
@@ -55,8 +55,14 @@
                     <a href="https://www.freebsd.org/cgi/man.cgi?query=netgraph" target="_blank">netgraph(3)</a>,
                     <a href="https://www.freebsd.org/cgi/man.cgi?query=netmap" target="_blank">netmap(4)</a>,
                     <a href="https://www.freebsd.org/cgi/man.cgi?query=rctl" target="_blank">rctl(8)</a>,
-                    <a href="https://www.freebsd.org/cgi/man.cgi?query=vnet" target="_blank">vnet(9)</a>,
-				</li>
+                    <a href="https://www.freebsd.org/cgi/man.cgi?query=vnet" target="_blank">vnet(9)</a>
+		</li>
+            </ul>
+        </section>
+	
+	<section>
+            <h2>Why use FreeBSD (let's continue)</h2>
+            <ul>
                 <li>A large number of ported software that is <a href="https://repology.org/repository/freebsd" target="_blank">up to date</a></li>
                 <li>Support for <a href="https://www.freebsd.org/platforms" target="_blank">multiple architectures</a></li>
                 <li>Thorough
@@ -65,7 +71,7 @@
                 </li>
                 <li>Advanced community</li>
             </ul>
-        </section>
+        </section>	
 
         <section id="features">
             <h2>FreeBSD features</h2>
@@ -80,17 +86,20 @@
                 <li>Fixed/Semiannual release cycle</li>
                 <li>Support for several major releases</li>
             </ul>
-            Read:
-            <a target="_blank" href="https://www.freebsd.org/releases/">Release Information</a>
+	    <blockquote>
+	    	Read: <a target="_blank" href="https://www.freebsd.org/releases/">Release Information</a>
+	    </blockquote>
         </section>
 
-        <section id="git">
-            <h2>Git repository</h2>
+        <section id="repo">
+            <h2>Repositories</h2>
             <p>
-                Source code repositories: <a href="https://cgit.freebsd.org" target="_blank">cgit.freebsd.org</a>
+               The official geographically distributed mirror for the general public is git.FreeBSD.org, The access URL is: <a href="https://cgit.freebsd.org/src" target="_blank">https://cgit.freebsd.org/src</a>
             </p>
             <p>
-                Mirror <a href="https://github.com/freebsd/freebsd">on GitHub</a>
+	       There are several officially maintained external mirrors. The list is available at <a href="https://docs.freebsd.org/en/books/handbook/mirrors/#external-mirrors" target="_blank">
+	       https://docs.freebsd.org/en/books/handbook/mirrors/#external-mirrors
+                </a>
             </p>
         </section>
 
@@ -105,8 +114,8 @@
 
         <section id="hardware">
             <h2>Supported hardware</h2>
-            <p><a target="_blank" href="https://dmesgd.nycbug.org/index.cgi?do=index&amp;fts=FreeBSD">NYC*BUG dmesgd</a></p>
-            <p><a target="_blank" href="https://bsd-hardware.info/?view=computers">Hardware for FreeBSD</a></p>
+            <p>&#128073 <a target="_blank" href="https://dmesgd.nycbug.org/index.cgi?do=index&amp;fts=FreeBSD">NYC*BUG dmesgd</a></p>
+            <p>&#128073 <a target="_blank" href="https://bsd-hardware.info/?view=computers">Hardware for FreeBSD</a></p>
         </section>
 
         <!-- Base system -->
@@ -157,7 +166,9 @@
                     </tr>
                 </tbody>
             </table>
-            See also: hier(7)
+	    <blockquote>
+                See also: hier(7)
+	    </blockquote>
         </section>
 
         <section id="man">
@@ -165,6 +176,7 @@
             <code>
                 # How to read a man page, for example foo(5) ?
                 man 5 foo
+		    
             </code>
             <p>
                 Or view it on your browser at: <a target="_blank" href="https://man.freebsd.org">https://man.freebsd.org</a>
@@ -213,6 +225,7 @@
                 # For example, to start the sshd(8) daemon for OpenSSH SSH daemon, you might do
                 service sshd enable
                 service sshd start
+		    
             </code>
             <blockquote>
                 Read:
@@ -235,6 +248,7 @@
 
             # Perform network (re)initialisation
             sh /etc/rc.d/netif restart
+		    
             </code>
         </section>
 
@@ -269,17 +283,19 @@
             <h3>Example 1: configure static IP address for em0</h3>
             <code>
             sysrc ifconfig_em0="inet 192.168.0.58/24"
+		    
             </code>
             <blockquote>
             Don't forget to run <code>sh /etc/rc.d/netif restart</code> to apply changes to running system.
             </blockquote>
         </section>
 
-        <section id="networking-dhcp>
+        <section id="networking-dhcp">
             <h2>networking (set at startup)</h2>
             <h3>Example 2: configure DHCP for em0</h3>
             <code>
             sysrc ifconfig_em0="DHCP"
+		    
             </code>
             <blockquote>
                 Don't forget to run <code>sh /etc/rc.d/netif restart</code> to apply changes to running system.
@@ -292,8 +308,13 @@
             <code>
             # First, see a list of available wireless networks:
             ifconfig wlan0 scan
-                </code>
-                <code>
+		    
+            </code>
+	</section>
+		
+	<section id="networking-wireless">
+            <h3>Example 3: configure wireless (suite)</h3>
+            <code>
             File: /etc/wpa_supplicant.conf
             eapol_version=2
             ap_scan=1
@@ -305,21 +326,32 @@
                 psk="KEY"
                 priority=5
             }
+		    
+            </code>
+	</section>
+	<section id="networking-wireless">
+            <h3>Example 3: configure wireless (suite)</h3>
+            <code>
+            File: /etc/wpa_supplicant.conf            
             network={
                 priority=0
                 key_mgmt=NONE
             }
+		    
           </code>
-
+	</section>
+	
+	<section>
+	    <h3>Example 3: configure wireless (suite)</h3>
             <code>
             # Configure wlan
             sysrc wlans_ath0="wlan0"
             sysrc ifconfig_wlan0="WPA DHCP"
+		    
           </code>
-
-                <blockquote>
-                    Don't forget to run <code>sh /etc/rc.d/netif restart</code> to apply changes to running system.
-                </blockquote>
+	 <blockquote>
+	     Don't forget to run <code>sh /etc/rc.d/netif restart</code> to apply changes to running system.
+	 </blockquote>
         </section>
 
         <!-- Packages -->
@@ -332,7 +364,7 @@
                 url: "pkg+http://pkg.FreeBSD.org/${ABI}/latest",
 
                 You can switch it to the last one:
-                <pre>
+		    
                    mkdir -p /usr/local/etc/pkg/repos
                    cat &gt; /usr/local/etc/pkg/repos/FreeBSD.conf &lt;&lt;EOF
                      FreeBSD: { enabled: no }
@@ -344,7 +376,6 @@
                        enabled: yes
                      }
                    EOF
-                </pre>
 
                 # Search for packages
                 pkg search foobar
@@ -415,8 +446,8 @@
             </code>
             <blockquote>
                 Read:
-                <a target="_blank" href="https://man.openbsd.org/OpenBSD-6.9/doas">doas(1)</a>,
-                <a target="_blank" href="https://man.openbsd.org/OpenBSD-6.9/doas.conf">doas.conf(5)</a>
+                <a target="_blank" href="https://man.freebsd.org/doas">doas(1)</a>,
+                <a target="_blank" href="https://man.freebsd.org/doas.conf">doas.conf(5)</a>
             </blockquote>
             <blockquote>
                 Try <a target="_blank" href="http://www.tedunangst.com/flak/post/doas-mastery">doas mastery</a> (blog).
