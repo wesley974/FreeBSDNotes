@@ -1,62 +1,43 @@
 /*
-  last changes on June 23, 2021
-  owner : Wesley Mouedine Assaby
-
-  :root {
-  --color0: #002b36; used
-  --color1: #93a1a1; used
-  --color2: #fcd030; used
-  --color3: #f3715a; used
-  --color4: #268bd2; used
-  --color5: #eee8d5; used
-  --color6: #a7a2a9; used
-  --color7: #ffbb1f; used
-  --color8: #310dff; used
-  --color9: #161b1d; used
-  --colorA: #b8b08d; used
-  --colorB: #7ea2b4; used
-
-}
-
+  owner: Wesley Mouedine Assaby
+  originally from: https://openbsdjumpstart.org/css/style.css
+  edited: Egor Kuzmichev
 */
-
-nav {
-white-space: pre;
-color:white;
-}
-
-
-body {
-margin:0;
-padding:0 !important;
-background: black;
-}
 
 @import url(https://fonts.googleapis.com/css?family=Montserrat:700);
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,700);
 
-section {
-  background-color: #002b36;
-  font-family: 'Roboto', sans-serif;
-  color: #93a1a1;
-  margin-bottom: 200px;
-  padding: 20px;
+body {
+  margin:0;
+  padding:0;
+  background: black;
 }
 
-.reveal h1, 
-.reveal h2, 
-.reveal h4, 
-.reveal h5, 
-.reveal strong {
+/* Sections */
+
+section {
+  background: linear-gradient(#ab2b28, #000000);
+  font-family: 'Roboto', sans-serif;
+  color: #cccccc;
+  padding: 20px;
+  height: 100vh;
+}
+
+#logo {
+  text-align: center;
+}
+
+/* General elements */
+
+h1, 
+h2, 
+h4, 
+h5, 
+strong {
   font-family: "Montserrat", sans-serif;
 }
 
-.reveal code {
-  font-family: monospace;
-  white-space: pre;
-}
-
-.reveal h1 {  
+h1 {  
   font-size: 3em;
   line-height: 1.5em;
   border: solid;
@@ -65,27 +46,14 @@ section {
   margin: 0.5em auto;
   border-color: #fcd030;
   color: #fcd030;
+  text-align: center;
 }
 
-.reveal h1 span {
+h1 span {
   color: #f3715a;
 }
 
-.reveal p {
-  font-size: 2em;
-  line-height: 1.5em;
-}
-
-.reveal small {
-  font-size: 1.5em;
-}
-
-.reveal a {
-  color: #268bd2;
-  text-decoration: none;
-}
-
-.reveal h2 {
+h2 {
   font-size: 2.8em;
   margin-bottom: 1em;
   color: #eee8d5;
@@ -93,26 +61,36 @@ section {
   letter-spacing: .1em;
 }
 
-.reveal h3 {
+h3 {
   color: #a7a2a9;
   font-size: 2em;
   margin-bottom: 1em;
 }
 
-.reveal h4 {
+h4 {
   font-size: 5.5em;
   text-transform: uppercase;
   color: #ffbb1f; 
   margin-bottom: .5em;
 }
 
-.reveal h5 {
+h5 {
   font-size: 2em;
   text-transform: uppercase;
   margin-bottom: 20px;
 }
 
-.reveal ul {
+p {
+  font-size: 2em;
+  line-height: 1.5em;
+}
+
+a {
+  color: #ffc628;
+  text-decoration: none;
+}
+
+ul {
   text-align: left;
   list-style-type: circle;
   font-size: 2em;
@@ -123,10 +101,45 @@ li span, tr td span, tr td code, p strong {
   color: #ffbb1f;
 }
 
-.reveal blockquote {
+/* Tables */
+
+table {
+  width: 100%;
+}
+
+table td {
+  text-align: left;
+  padding: 0.2em 0.5em 0.2em 0.5em;
+  border-bottom: 1px solid;
+  font-size: 2em;
+  line-height: 1.5em;
+}
+
+table tbody tr:first-child th[colspan="2"] {
+  text-align: center;
+  font-style: italic;
+  letter-spacing: 5px;
+
+  padding-bottom: 5px;
+  border-bottom: 1px solid;
+  font-size: 1.7em;
+  line-height: 1.5em;
+}
+
+table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* Special blocks */
+
+small {
+  font-size: 1.5em;
+}
+
+blockquote {
   font-size: 1.5em;
   color: #eee8d5;
-  background-color: #310dff;
+  background-color: #333333;
   margin-top: 1em;
   text-align: left;
   line-height: 1.2em;
@@ -136,11 +149,11 @@ li span, tr td span, tr td code, p strong {
   margin-left: 0;
 }
 
-.reveal blockquote a {
+blockquote a {
   color: #ffbb1f;
 }
 
-.reveal blockquote code {
+blockquote code {
   font-size: 1.4em;
   font-weight: bold;
   background-color: #161b1d;
@@ -148,23 +161,12 @@ li span, tr td span, tr td code, p strong {
   padding: 5px 15px;
 }
 
-.reveal table {
-  width: 100%;
+code {
+  font-family: monospace;
+  white-space: pre;
 }
 
-.reveal table td {
-  text-align: left;
-  padding: 0.2em 0.5em 0.2em 0.5em;
-  border-bottom: 1px solid;
-  font-size: 2em;
-  line-height: 1.5em;
-}
-
-.reveal table tbody tr:last-child td {
-  border-bottom: none;
-}
-
-.reveal code {
+code {
   padding-left: 2em;
   margin: 20px auto;
   text-align: left;
@@ -176,6 +178,8 @@ li span, tr td span, tr td code, p strong {
   color: #268bd2;
 }
 
+/* Optional classes */
+
 .hljs-comment {
   color: #7ea2b4;
 }
@@ -184,58 +188,10 @@ span .hljs-comment {
   color: #b8b08d;
 }
 
-.reveal .controls {
+.controls {
   color: #eee8d5;
 }
 
 .text-justify {
   text-align: justify;
-}
-
-.reveal table tbody tr:first-child th[colspan="2"] {
-  text-align: center;
-  font-style: italic;
-  letter-spacing: 5px;
-
-  padding-bottom: 5px;
-  border-bottom: 1px solid;
-  font-size: 1.7em;
-  line-height: 1.5em;
-}
-
-.reveal section:nth-child(45) table {
-  margin: 0 auto;
-  width: 70%;
-}
-
-.reveal section:nth-child(46) table td:first-child {
-  width: 35%;
-}
-
-.reveal section:nth-child(47) table td:first-child {
-  width: 40%;
-}
-
-.reveal section:nth-child(48) table td:first-child {
-  width: 35%;
-}
-
-.reveal section:nth-child(49) table td:first-child {
-  width: 40%;
-}
-
-.reveal section:nth-child(50) table td:first-child {
-  width: 40%;
-}
-
-.reveal section:nth-child(55) {
-  text-align: left;
-}
-
-.reveal section:nth-child(55) .bmc {
-  margin-top: 50px;
-}
-
-.reveal section:nth-child(54) span + span {
-  margin-left: 50px;
 }
