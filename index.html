@@ -15,80 +15,16 @@
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 
-<body>
-    <div class="slides">
+<body class="slides reveal">
 
-<!-- 
-Contents
-* Logo
-* History 
-* Why use FreeBSD
-* FreeBSD features
-* FreeBSD versioning
-* FreeBSD branches
-* Git repository
-* Where to get help
-  * Handbook
-  * Manual pages
-* Supported hardware
-* Installation
-  * Firmware
-* FreeBSD startup
-* Filesystems
-  * ZFS
-  * UFS
-* Directory structure
-* Networking
-  * Networking files
-  * Networking at startup
-    * static IP
-    * DHCP
-    * Wireless
-  * Routing  
-  * Enable PF
-    * PF ruleset example
-    * PF useful commands
-    * Debug PF with tcpdump
-* Manage users
-* Manage groups
-* Manage services
-  * Run script at startup
-* Packages
- * Install packages
- * Get packages info
- * Delete a package
- * Useful packages
- * Sudo or doas
-* Updating
-  * Updating (RELEASE)
-  * Security updates
-  * Vulnerables reports
-  * Update all pkg database
-* Kernel
-  * Kernel modules
-  * FreeBSD kernel
-* Tune the system
-* Laptop
-  * Setting laptop hibernation
-  * Wayland + sway setup
-* Virtualization
-  * Jails
-  * Bhyve
-  * CBSD
-* Maintenance
-* Bonus
-* More help
-* FreeBSD hosting
--->
+        <!-- General info -->
 
-	<!-- Slide 1 -->
-        <section>
-            <img src="https://www.freebsd.org/gifs/releases.jpg" alt="image_from_freebsd_org">
+        <section id="logo">
+            <img src="FREEBSD_Logo_Horiz_Pos_RGB.png" alt="FreeBSD">
             <h1>FreeBSD 13.0 Updated!</h1>
         </section>
 
-	<!-- Slide 2 -->
-        <section>
+        <section id="history">
             <h2>History</h2>
             <p>
                 <a href="http://people.freebsd.org/~jkh/" target="_blank">Jordan K. Hubbard</a>,
@@ -101,8 +37,7 @@ Contents
             </p>
         </section>
 
-	<!-- Slide 3 -->
-        <section>
+        <section id="why-freebsd">
             <h2>Why use FreeBSD</h2>
             <ul>
                 <li>UNIX-like</li>
@@ -132,16 +67,14 @@ Contents
             </ul>
         </section>
 
-	<!-- Slide 4 -->
-        <section>
+        <section id="features">
             <h2>FreeBSD features</h2>
             <p>
                 FreeBSD offers many unique features: <a target="_blank" href="https://www.freebsd.org/features">https://www.freebsd.org/features</a>
             </p>
         </section>
 
-	<!-- Slide 5 -->
-        <section>
+        <section id="versions">
             <h2>FreeBSD version numbers</h2>
             <ul>
                 <li>Fixed/Semiannual release cycle</li>
@@ -151,47 +84,34 @@ Contents
             <a target="_blank" href="https://www.freebsd.org/releases/">Release Information</a>
         </section>
 
-	<!-- Slide 6 -->
-        <section>
-            <h2>freebsd branches</h2>
-            <ul>
-                <li>-release, just a snapshot of -stable branch</li>
-                <li>-stable, every 2 to 3 years, a stable branch from the -current branch</li>
-                <li>-current, development branch (head tagged)</li>
-            </ul>
-        </section>
-
-	<!-- Slide 7 -->
-        <section>
+        <section id="git">
             <h2>Git repository</h2>
             <p>
                 Source code repositories: <a href="https://cgit.freebsd.org" target="_blank">cgit.freebsd.org</a>
             </p>
-        </section>
-
-	<!-- Slide 8 -->
-        <section>
-            <h2>Manual pages</h2>
-            <pre>
-            <code>
-                # How to read a man page, for example foo(5) ?
-                man 5 foo
-            </code>
-            </pre>
             <p>
-                Or view it on your browser at: <a target="_blank" href="https://man.freebsd.org">https://man.freebsd.org</a>
+                Mirror <a href="https://github.com/freebsd/freebsd">on GitHub</a>
             </p>
         </section>
 
-	<!-- Slide 9 -->
-        <section>
+        <section id="git-branches">
+            <h2>FreeBSD branches</h2>
+            <ul>
+                <li>-releng, release engineering based on stable</li>
+                <li>-stable, every 2 to 3 years, a stable branch from the -current branch</li>
+                <li>-main, development branch (head tagged)</li>
+            </ul>
+        </section>
+
+        <section id="hardware">
             <h2>Supported hardware</h2>
             <p><a target="_blank" href="https://dmesgd.nycbug.org/index.cgi?do=index&amp;fts=FreeBSD">NYC*BUG dmesgd</a></p>
             <p><a target="_blank" href="https://bsd-hardware.info/?view=computers">Hardware for FreeBSD</a></p>
         </section>
 
-	<!-- Slide 10 -->
-        <section>
+        <!-- Base system -->
+
+        <section id="installation">
             <h2>Installation</h2>
             <p>
                 Really simple, ready in 5 minutes (<a target="_blank" href="https://en.wikipedia.org/wiki/KISS_principle">KISS</a>).
@@ -201,22 +121,119 @@ Contents
             </blockquote>
         </section>
 
-	<!-- Slide 12 -->
-        <section>
+        <section id="startup">
+            <h2>Full FreeBSD Startup described!</h2>
+            <p>...</p>
+        </section>
+
+        <section id="hier">
+            <h2>Directory structure</h2>
+            <table>
+                <colgroup span="2"></colgroup>
+                <tbody>
+                    <tr>
+                        <th colspan="2" scope="colgroup">The most important to know!</th>
+                    </tr>
+                    <tr>
+                        <td>/</td>
+                        <td>Root directory</td>
+                    </tr>
+                    <tr>
+                        <td>/home&rarr;/usr/home</td>
+                        <td>User home directories</td>
+                    </tr>
+                    <tr>
+                        <td>/root</td>
+                        <td>Default home directory for the superuser</td>
+                    </tr>
+                    <tr>
+                        <td>/mnt</td>
+                        <td>A temporary mount point</td>
+                    </tr>
+                </tbody>
+            </table>
+            See also: hier(7)
+        </section>
+
+        <section id="man">
+            <h2>Manual pages</h2>
+            <code>
+                # How to read a man page, for example foo(5) ?
+                man 5 foo
+            </code>
+            <p>
+                Or view it on your browser at: <a target="_blank" href="https://man.freebsd.org">https://man.freebsd.org</a>
+            </p>
+        </section>
+
+        <section id="firmware">
+            <h2>Non-free firmware packages</h2>
+            <p>Some of firmware distributed by ports collection.</p>
+            <p>For graphics-related issues see: <a href="https://github.com/FreeBSDDesktop">FreeBSDDesktop</a> project</p>
+        </section>
+
+        <section id="filesystems">
             <h2>Filesystem</h2>
             <p>
                 FreeBSD offers two filesystems out of the box: UFS and ZFS.
             </p>
         </section>
 
-	<!-- Slide 13 -->
-        <section>
+        <section id="zfs">
             <h2>ZFS</h2>
             <p>...</p>
+        </section>   
+
+        <section id="rc.conf">
+            <h2>Configuring FreeBSD</h2>
+            <p>/etc/rc.conf is key-value file, by which FreeBSD if generally configured.</p>
+            <p>rc.conf is read by /etc/rc during <a href="#startup">startup process</a>.
         </section>
 
-	<!-- Slide 14 -->
-        <section>
+        <section id="rc.local">
+            <h2>Run a script at startup</h2>
+            <h3>File: /etc/rc.local</h3>
+            <blockquote>
+                Read: <a target="_blank" href="https://man.freebsd.org/rc/8">rc(8)</a>
+            </blockquote>
+        </section>
+
+        <section id="services">
+            <h2>Manage services</h2>
+            <p>Files: /etc/rc.conf, /etc/rc.conf.d/*</p>
+            <p>Service startup scripts are located in /etc/rc.d/* and /usr/local/etc/rc.d/*</p>
+            <code>
+                service [enable|disable|start|stop|reload|restart] foobar
+
+                # For example, to start the sshd(8) daemon for OpenSSH SSH daemon, you might do
+                service sshd enable
+                service sshd start
+            </code>
+            <blockquote>
+                Read:
+                <a target="_blank" href="https://man.freebsd.org/service/8">service(8)</a>
+                <a target="_blank" href="https://man.freebsd.org/sysrc/8">sysrc(8)</a>
+                <a target="_blank" href="https://man.freebsd.org/rc.conf/5">rc.conf(5)</a>,
+            </blockquote>
+        </section>
+
+        <!-- Networking -->
+
+        <section id="networking">
+            <h2>Networking</h2>
+            <code>
+            # Display the current configuration of network interfaces
+            ifconfig
+
+            # Set DHCP for 'em0' interface, on the fly
+            dhclient em0
+
+            # Perform network (re)initialisation
+            sh /etc/rc.d/netif restart
+            </code>
+        </section>
+
+        <section id="networking-files">
             <h2>Networking files</h2>
             <table>
                 <tbody>
@@ -242,238 +259,97 @@ Contents
             </blockquote>
         </section>
 
-	<!-- Slide 15 -->
-        <section>
-            <h2>Networking</h2>
-            <pre><code>
-        # Display the current configuration of network interfaces
-        ifconfig
-
-        # Set DHCP for 'em0' interface, on the fly
-        dhclient em0
-
-        # Perform network (re)initialisation
-        sh /etc/rc.d/netif restart
-      </code></pre>
-        </section>
-
-        <section>
+        <section id="networking-static-ip">
             <h2>Networking (set at startup)</h2>
             <h3>Example 1: configure static IP address for em0</h3>
-            <pre><code>
-        sysrc ifconfig_em0="inet 192.168.0.58/24"
-      </code></pre>
+            <code>
+            sysrc ifconfig_em0="inet 192.168.0.58/24"
+            </code>
             <blockquote>
-                Don't forget to run <code>sh /etc/rc.d/netif restart</code> to apply changes to running system.
+            Don't forget to run <code>sh /etc/rc.d/netif restart</code> to apply changes to running system.
             </blockquote>
         </section>
 
-        <section>
+        <section id="networking-dhcp>
             <h2>networking (set at startup)</h2>
             <h3>Example 2: configure DHCP for em0</h3>
-            <pre><code>
-        sysrc ifconfig_em0="DHCP"
-
-      </code></pre>
+            <code>
+            sysrc ifconfig_em0="DHCP"
+            </code>
             <blockquote>
                 Don't forget to run <code>sh /etc/rc.d/netif restart</code> to apply changes to running system.
             </blockquote>
         </section>
 
-        <section>
+        <section id="networking-wireless">
             <h2>networking (set at startup)</h2>
             <h3>Example 3: configure wireless</h3>
-            <pre><code>
-        # First, see a list of available wireless networks:
-        ifconfig wlan0 scan
+            <code>
+            # First, see a list of available wireless networks:
+            ifconfig wlan0 scan
+                </code>
+                <code>
+            File: /etc/wpa_supplicant.conf
+            eapol_version=2
+            ap_scan=1
+            fast_reauth=1
 
-      </code></pre>
-            <pre><code>
-        File: /etc/wpa_supplicant.conf
-        eapol_version=2
-        ap_scan=1
-        fast_reauth=1
+            network={
+                ssid="SSID"
+                scan_ssid=0
+                psk="KEY"
+                priority=5
+            }
+            network={
+                priority=0
+                key_mgmt=NONE
+            }
+          </code>
 
-        network={
-            ssid="SSID"
-            scan_ssid=0
-            psk="KEY"
-            priority=5
-        }
-        network={
-            priority=0
-            key_mgmt=NONE
-        }
+            <code>
+            # Configure wlan
+            sysrc wlans_ath0="wlan0"
+            sysrc ifconfig_wlan0="WPA DHCP"
+          </code>
 
-      </code></pre>
-
-            <pre><code>
-        # Configure wlan
-        sysrc wlans_ath0="wlan0"
-        sysrc ifconfig_wlan0="WPA DHCP"
-      </code></pre>
-
-            <blockquote>
-                Don't forget to run <code>sh /etc/rc.d/netif restart</code> to apply changes to running system.
-            </blockquote>
+                <blockquote>
+                    Don't forget to run <code>sh /etc/rc.d/netif restart</code> to apply changes to running system.
+                </blockquote>
         </section>
 
-        <section>
-            <h2>Routing</h2>
-            <pre><code>
-        # Show the routing table (ipv4)
-        netstat -rn4
+        <!-- Packages -->
 
-        # Show the routing table (ipv6)
-        netstat -rn6
-
-        # Delete all gateway entries from the routing table
-        route -n flush
-
-      </code></pre>
-        </section>
-
-        <section>
-            <h2>Enable PF</h2>
-            <pre><code>
-        service pf enable
-        sysrc pf_rules=/etc/pf.conf
-        
-        service pflog enable
-        sysrc pflog_logfile=/var/log/pflog
-        
-        # create your /etc/pf.conf, then start pf
-        service pf start
-
-      </code></pre>
-        </section>
-
-        <section>
-            <h2>PF ruleset sample</h2>
-            <pre><code>
-        File: /etc/pf.conf
-        # Add your network card to egress group
-        # ifconfig em0 group egress
-        # or sysrc ifconfig_em0+="group egress"
-	#
-        # Protect a laptop (allow only ping/ssh from anywhere)
-
-        set skip on lo
-        block log all
-        pass in on egress inet proto icmp all icmp-type echoreq
-        pass in on egress inet proto tcp from any to any port ssh
-        pass out
-
-      </code></pre>
-            <blockquote>
-                Read: <a target="_blank" href="https://man.freebsd.org/pf.conf/5">pf.conf(5)</a>
-            </blockquote>
-        </section>
-
-        <section>
-            <h2>pf (packet filter)</h2>
-
-            <h3>(Useful commands)</h3>
-
-            <pre><code>
-        # Disable PF
-        pfctl -d
-        
-        # Check your rules
-        pfctl -nf /etc/pf.conf
-
-        # Enable PF and load the rules
-        pfctl -ef /etc/pf.conf
-
-        # Just load the rules (apply changes)
-        pfctl -f /etc/pf.conf
-
-        # View the loaded rules
-        pfctl -s rules
-
-      </code></pre>
-            <blockquote>
-                Read: <a target="_blank" href="https://man.freebsd.org/pfctl/8">pfctl(8)</a>
-            </blockquote>
-        </section>
-
-        <section>
-            <h2>debug pf with tcpdump</h2>
-            <pre><code>
-        tcpdump -nettti pflog0
-
-      </code></pre>
-            <blockquote>
-                Read: <a target="_blank" href="https://man.freebsd.org/tcpdump/1">tcpdump(8)</a>
-            </blockquote>
-        </section>
-
-        <section>
-            <h2>Manage users</h2>
-            <pre><code>
-      # Manually
-      pw user [add|del|mod|show|next]
-
-      # Add users interactively
-      adduser
-
-      </code></pre>
-            <blockquote>
-                Read:
-                <a target="_blank" href="https://man.freebsd.org/pw/8">pw(8)</a>
-                <a target="_blank" href="https://man.freebsd.org/adduser/8">adduser(8)</a>
-            </blockquote>
-        </section>
-
-        <section>
-            <h2>manage groups</h2>
-            <h3>File: /etc/group</h3>
-            <pre><code>
-        pw group [add|del|mod|show|next]
-
-      </code></pre>
-            <blockquote>
-                Members in wheel group can use <a target="_blank" href="https://man.freebsd.org/su/1">su(1)</a>
-                to become root.
-            </blockquote>
-            <blockquote>
-                Read:
-                <a target="_blank" href="https://man.freebsd.org/group/5">group(5)</a>
-            </blockquote>
-        </section>
-
-        <section>
+        <section id="pkg">
             <h2>Install packages</h2>
-            <pre><code>
-        # Official support for two branches: quarterly or rolling (latest).
-        By default, the /etc/pkg/FreeBSD.conf file already contains an FreeBSD quarterly mirror server URL
-        url: "pkg+http://pkg.FreeBSD.org/${ABI}/latest",
+            <code>
+                # Official support for two branches: quarterly or rolling (latest).
+                By default, the /etc/pkg/FreeBSD.conf file already contains an FreeBSD quarterly mirror server URL
+                url: "pkg+http://pkg.FreeBSD.org/${ABI}/latest",
 
-        You can switch it to the last one:
-        <pre><code>
-           mkdir -p /usr/local/etc/pkg/repos
-           cat &gt; /usr/local/etc/pkg/repos/FreeBSD.conf &lt;&lt;EOF
-             FreeBSD: { enabled: no }
-             FreeBSD-latest: {
-               url: "pkg+http://pkg.FreeBSD.org/${ABI}/latest",
-               mirror_type: "srv",
-               signature_type: "fingerprints",
-               fingerprints: "/usr/share/keys/pkg",
-               enabled: yes
-             }
-           EOF
-        </code></pre>
+                You can switch it to the last one:
+                <pre>
+                   mkdir -p /usr/local/etc/pkg/repos
+                   cat &gt; /usr/local/etc/pkg/repos/FreeBSD.conf &lt;&lt;EOF
+                     FreeBSD: { enabled: no }
+                     FreeBSD-latest: {
+                       url: "pkg+http://pkg.FreeBSD.org/${ABI}/latest",
+                       mirror_type: "srv",
+                       signature_type: "fingerprints",
+                       fingerprints: "/usr/share/keys/pkg",
+                       enabled: yes
+                     }
+                   EOF
+                </pre>
 
-        # Search for packages
-        pkg search foobar
+                # Search for packages
+                pkg search foobar
 
-        # For example, to install Squid
-        pkg install squid
+                # For example, to install Squid
+                pkg install squid
 
-        # Update packages
-        pkg upgrade
-
-        </code></pre>
+                # Update packages
+                pkg upgrade
+            </code>
             <blockquote>
                 Read:
                 <a target="_blank" href="https://man.freebsd.org/pkg.conf/5">pkg.conf(5)</a>,
@@ -483,58 +359,55 @@ Contents
             </blockquote>
         </section>
 
-        <section>
+        <section id="pkg-1">
             <h2>Packages</h2>
-            <pre><code>
-        # List packages installed
-        pkg info
+            <code>
+                # List packages installed
+                pkg info
 
-        # List files installed by a package
-        pkg info -l foobar
+                # List files installed by a package
+                pkg info -l foobar
 
-        # View install-message for a specific package
-        pkg info -D foobar
+                # View install-message for a specific package
+                pkg info -D foobar
+            </code>
+        </section>
 
-        </code></pre>
-
-        <section>
+        <section id="pkg-2">
             <h2>packages (continued)</h2>
-            <pre><code>
-        # Delete a Package
-        pkg delete foobar
+            <code>
+                # Delete a Package
+                pkg delete foobar
 
-        # Show unused dependencies
-        pkg autoremove -n
+                # Show unused dependencies
+                pkg autoremove -n
 
-        # Delete unused dependencies
-        pkg autoremove
+                # Delete unused dependencies
+                pkg autoremove
 
-        # Delete all packages
-        pkg delete -a
-
-      </code></pre>
+                # Delete all packages
+                pkg delete -a
+            </code>
             <blockquote>
                 Read: <a target="_blank" href="https://man.freebsd.org/pkg-delete">pkg-delete(8)</a>
             </blockquote>
         </section>
 
-        <section>
+        <section id="pkg-sudo-doas">
             <h2>sudo(1) or doas(1)</h2>
             <p>Neither sudo(1) nor doas(1) comes along base system. You are free to choose one from packages.</p>
             <code>
                 # pkg install doas
             </code>
-            <pre><code>
-        File: /etc/doas.conf
-        # Permit the user 'marc' to reboot the box
-        permit nopass marc as root cmd /sbin/reboot
-
-      </code></pre>
-            <pre><code>
-        # Marc can now reboot the box
-        $ doas reboot
-
-      </code></pre>
+            <code>
+                File: /etc/doas.conf
+                # Permit the user 'marc' to reboot the box
+                permit nopass marc as root cmd /sbin/reboot
+            </code>
+            <code>
+                # Marc can now reboot the box
+                $ doas reboot
+            </code>
             <blockquote>
                 Read:
                 <a target="_blank" href="https://man.openbsd.org/OpenBSD-6.9/doas">doas(1)</a>,
@@ -545,68 +418,206 @@ Contents
             </blockquote>
         </section>
 
-        <section>
-            <h2>Non-free firmware packages</h2>
-            <p>Some of firmware distributed by ports collection.</p>
-            <p>For graphics-related issues see: <a href="https://github.com/FreeBSDDesktop">FreeBSDDesktop</a> project</p>
+        <section id="pkg-audit">
+            <h2>See reports about vulnerable software packages</h2>
+            <code>
+                # Execute the following command:
+                pkg audit -F
+
+                # See a list of vulnerable packages, run:
+                pkg audit
+            </code>
         </section>
 
-        <section>
-            <h2>Manage services</h2>
-            <h3>File: /etc/rc.conf, /etc/rc.conf.d/*</h3>
-            <pre><code>
-        service [enable|disable|start|stop|reload|restart] foobar
+        <section id="pkg-update">
+            <h2>Update all FreeBSD packages database</h2>
+            <code>
+                pkg update
+            </code>
+        </section>
 
-        # For example, to start the sshd(8) daemon for OpenSSH SSH daemon, you might do
-        service sshd enable
-        service sshd start
+        <section id="pkg-useful">
+            <h2>some useful packages</h2>
+            <table>
+                <tbody>
+                    <tr>
+                        <td>screenfetch</td>
+                        <td>Display system information in the terminal</td>
+                    </tr>
+                    <tr>
+                        <td>w3m</td>
+                        <td>Text-based web browser</td>
+                    </tr>
+                    <tr>
+                        <td>noice</td>
+                        <td>
+                            minimalistic file browser
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
 
-      </code></pre>
+        <section id="pkg-useful-1">
+            <h2>some useful packages (continued)</h2>
+            <table>
+                <tbody>
+                    <tr>
+                        <td>pstree</td>
+                        <td>List processes as a tree</td>
+                    </tr>
+                    <tr>
+                        <td>tmate</td>
+                        <td>Share your terminal on the web without open any ports</td>
+                    </tr>
+                    <tr>
+                        <td>testdisk</td>
+                        <td>Scan and repair disk partitions</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Routing -->
+
+        <section id="routing">
+            <h2>Routing</h2>
+            <code>
+            # Show the routing table (ipv4)
+            netstat -rn4
+
+            # Show the routing table (ipv6)
+            netstat -rn6
+
+            # Delete all gateway entries from the routing table
+            route -n flush
+            </code>
+        </section>
+
+        <section id="routing-pf">
+            <h2>Enable PF</h2>
+            <code>
+            service pf enable
+            sysrc pf_rules=/etc/pf.conf
+            
+            service pflog enable
+            sysrc pflog_logfile=/var/log/pflog
+            
+            # create your /etc/pf.conf, then start pf
+            service pf start
+            </code>
+        </section>
+
+        <section id="routing-pf-ruleset">
+            <h2>PF ruleset sample</h2>
+            <code>
+            File: /etc/pf.conf
+            # Add your network card to egress group
+            # ifconfig em0 group egress
+            # or sysrc ifconfig_em0+="group egress"
+        	#
+            # Protect a laptop (allow only ping/ssh from anywhere)
+
+            set skip on lo
+            block log all
+            pass in on egress inet proto icmp all icmp-type echoreq
+            pass in on egress inet proto tcp from any to any port ssh
+            pass out
+            </code>
+            <blockquote>
+                Read: <a target="_blank" href="https://man.freebsd.org/pf.conf/5">pf.conf(5)</a>
+            </blockquote>
+        </section>
+
+        <section id="routing-pf-commands">
+            <h2>pf (packet filter)</h2>
+
+            <h3>(Useful commands)</h3>
+
+            <code>
+            # Disable PF
+            pfctl -d
+            
+            # Check your rules
+            pfctl -nf /etc/pf.conf
+
+            # Enable PF and load the rules
+            pfctl -ef /etc/pf.conf
+
+            # Just load the rules (apply changes)
+            pfctl -f /etc/pf.conf
+
+            # View the loaded rules
+            pfctl -s rules
+            </code>
+            <blockquote>
+                Read: <a target="_blank" href="https://man.freebsd.org/pfctl/8">pfctl(8)</a>
+            </blockquote>
+        </section>
+
+        <section id="routing-pf-tcpdump">
+            <h2>debug pf with tcpdump</h2>
+            <code>
+                tcpdump -nettti pflog0
+            </code>
+            <blockquote>
+                Read: <a target="_blank" href="https://man.freebsd.org/tcpdump/1">tcpdump(8)</a>
+            </blockquote>
+        </section>
+
+        <!-- Administration -->
+
+        <section id="users">
+            <h2>Manage users</h2>
+            <code>
+                # Manually
+                pw user [add|del|mod|show|next]
+
+                # Add users interactively
+                adduser
+            </code>
             <blockquote>
                 Read:
-                <a target="_blank" href="https://man.freebsd.org/service/8">service(8)</a>
-                <a target="_blank" href="https://man.freebsd.org/sysrc/8">sysrc(8)</a>
-                <a target="_blank" href="https://man.freebsd.org/rc.conf/5">rc.conf(5)</a>,
+                <a target="_blank" href="https://man.freebsd.org/pw/8">pw(8)</a>
+                <a target="_blank" href="https://man.freebsd.org/adduser/8">adduser(8)</a>
             </blockquote>
         </section>
 
-        <section>
-            <h2>Run a script at startup</h2>
-            <h3>File: /etc/rc.local</h3>
+        <section id="groups">
+            <h2>manage groups</h2>
+            <h3>File: /etc/group</h3>
+            <code>
+                pw group [add|del|mod|show|next]
+            </code>
             <blockquote>
-                Read: <a target="_blank" href="https://man.freebsd.org/rc/8">rc(8)</a>
+                Members in wheel group can use <a target="_blank" href="https://man.freebsd.org/su/1">su(1)</a>
+                to become root.
+            </blockquote>
+            <blockquote>
+                Read:
+                <a target="_blank" href="https://man.freebsd.org/group/5">group(5)</a>
             </blockquote>
         </section>
 
-        <section>
+        <section id="updating">
             <h2>Updating FreeBSD (RELEASE)</h2>
             <p>Just use freebsd-update</p>
-            <p>And <code>pkg upgrade</code> to update packages.
-            </p>
-
+            <p>And <code>pkg upgrade</code> to update packages.</p>
         </section>
 
-        <section>
-            <h2>Update FreeBSD (CURRENT)</h2>
-            <p>
-                Preffered way to update CURRENT is update git-repository, then rebuild kernel and userland.
-            </p>
-        </section>
-
-        <section>
+        <section id="freebsd-version">
             <h1>the FreeBSD version and patch level</h1>
-            <pre><code>
+            <code>
                 freebsd-version
-            </code></pre>
+            </code>
         </section>
 
-        <section>
+        <section id="security-updates">
             <h1>FreeBSD Applying Security Updates</h1>
             <p><a href="https://www.freebsd.org/releases/13.0R/errata" target="_blank">FreeBSD 13.0-RELEASE Errata</a></p>
-            <pre><code>
-        freebsd-update fetch install
-
-      </code></pre>
+           <code> 
+                freebsd-update fetch install
+            </code>
             <blockquote>
                 Read:
                 <a target="_blank" href="https://man.freebsd.org/freebsd-update/8">freebsd-update(8)</a>,
@@ -614,41 +625,7 @@ Contents
             </blockquote>
         </section>
 
-        <section>
-            <h1>See reports about vulnerable software packages</h1>
-            <pre><code>
-        # Execute the following command:
-        pkg audit -F
-
-        # See a list of vulnerable packages, run:
-        pkg audit
-
-      </code></pre>
-        </section>
-
-        <section>
-            <h1>Update all FreeBSD packages database</h1>
-            <pre><code>
-        pkg update
-
-      </code></pre>
-        </section>
-
-        <section>
-            <h1>Kernel modules</h1>
-            <pre><code>
-        # List kernel modules loaded
-        kldstat
-        
-        # Load a kernel module
-        kldload pf
-        
-        # Unload a kernel module
-        kldunload pf
-      </code></pre>
-        </section>
-
-        <section>
+        <section id="freebsd-upgrade">
             <h2>upgrade openbsd</h2>
             <p>
                 To upgrade 6.7 to 6.9, you need to follow instructions from: <a target="_blank" href="https://www.openbsd.org/faq/upgrade68.html">https://www.openbsd.org/faq/upgrade68.html</a><br>and then<br><a target="_blank" href="https://www.openbsd.org/faq/upgrade69.html">https://www.openbsd.org/faq/upgrade69.html</a>
@@ -658,126 +635,7 @@ Contents
             </blockquote>
         </section>
 
-        <section>
-            <h2>Directory structure</h2>
-
-            <table>
-                <colgroup span="2"></colgroup>
-                <tbody>
-                    <tr>
-                        <th colspan="2" scope="colgroup">The most important to know!</th>
-                    </tr>
-                    <tr>
-                        <td>/</td>
-                        <td>Root directory</td>
-                    </tr>
-
-                    <tr>
-                        <td>/home</td>
-                        <td>User home directories</td>
-                    </tr>
-
-                    <tr>
-                        <td>/root</td>
-                        <td>Default home directory for the superuser</td>
-                    </tr>
-
-                    <tr>
-                        <td>/mnt</td>
-                        <td>A temporary mount point</td>
-                    </tr>
-                </tbody>
-            </table>
-	    See also: hier(7)
-        </section>
-
-        <section>
-            <h2>openbsd kernels</h2>
-            <p><strong>/bsd</strong><br>
-                Kernel executable (the operating system loaded into memory at boot-time).</p>
-            <blockquote>
-                In case of multiple processors, <a target="blank" href="https://cvsweb.openbsd.org/src/distrib/miniroot/install.sub">installer</a> will rename /bsd to /bsd.sp and finally /bsd.mp to /bsd
-            </blockquote>
-        </section>
-
-        <section>
-            <h2>openbsd kernels (continued)</h2>
-            <p><strong>/bsd.booted</strong><br>
-                Kernel executable, a resume from hibernation (handled by the bootloader).</p>
-        </section>
-
-        <section>
-            <h2>openbsd kernels</h2>
-            <p><strong>/obsd</strong><br>
-                Old kernel, next boot it will use the new kernel /bsd (kernel relinking).</p>
-        </section>
-
-        <section>
-            <h2>openbsd kernels (continued)</h2>
-            <p><strong>/bsd.sp</strong><br>
-                Kernel executable for single processor machines.</p>
-        </section>
-
-        <section>
-            <h2>openbsd kernels (continued)</h2>
-            <p><strong>/bsd.mp</strong><br>
-                Kernel executable for multiprocessor machines.</p>
-        </section>
-
-        <section>
-            <h2>openbsd kernels (continued)</h2>
-            <p><strong>/bsd.rd</strong></p>
-            <p>
-                Installation kernel. The built-in RAM disk contains utilities which can be run without an external file system, so this kernel is useful for limited system maintenance too.
-            </p>
-        </section>
-
-        <section>
-            <h2>tune the system</h2>
-            <p>
-                <a target="_blank" href="https://man.openbsd.org/OpenBSD-6.9/sysctl.conf">sysctl.conf(5)</a> sysctl variables to set at system startup<br>
-                <a target="_blank" href="https://man.openbsd.org/OpenBSD-6.9/sysctl">sysctl(8)</a> get or set kernel state<br>
-                &amp; <br>
-                <a target="_blank" href="https://man.openbsd.org/OpenBSD-6.9/config">config(8)</a> modify a kernel<br>
-            </p>
-        </section>
-
-        <section>
-            <h2>setting laptop hibernation (sysctl)</h2>
-            <table>
-                <tbody>
-                    <tr>
-                        <td>machdep.lidaction=0</td>
-                        <td>do nothing</td>
-                    </tr>
-                    <tr>
-                        <td>machdep.lidaction=1</td>
-                        <td>suspend</td>
-                    </tr>
-                    <tr>
-                        <td>machdep.lidaction=2</td>
-                        <td>hibernate</td>
-                    </tr>
-                </tbody>
-            </table>
-        </section>
-
-        <section>
-            <h2>Full FreeBSD Startup described!</h2>
-            <p>...</p>
-        </section>
-
-        <section>
-            <h2>Jails</h2>
-			<p>...</p>
-        </section>
-
-        <section>
-            <h2>Bhyve</h2>
-			<p>...</p>
-        </section>
-
-        <section>
+        <section id="maintenance">
             <h2>maintenance</h2>
             <table>
                 <tbody>
@@ -814,32 +672,81 @@ Contents
             </blockquote>
         </section>
 
-        <section>
-            <h2>maintenance (continued)</h2>
-            <table>
-                <tbody>
-                    <tr>
-                        <td><code>reset</code></td>
-                        <td>reset your terminal when it gets messed up by control sequences</td>
-                    </tr>
-                    <tr>
-                        <td><code>rcctl ls on</code></td>
-                        <td>what is enabled on your system</td>
-                    </tr>
-                    <tr>
-                        <td><code>doas rcctl ls started</code></td>
-                        <td>what is running on your system</td>
-                    </tr>
-                </tbody>
-            </table>
+        <!-- Kernel -->
+        
+        <section id="kernel">
+            <h2>FreeBSD kernels</h2>
+            <p>Kernel and modules are located in /boot/kernel (the operating system loaded into memory at boot-time).</p>
             <blockquote>
-                Read:
-                <a target="_blank" href="https://man.openbsd.org/OpenBSD-6.9/reset">reset(1)</a>,
-                <a target="_blank" href="https://man.openbsd.org/OpenBSD-6.9/rcctl">rcctl(8)</a>
+                In case of multiple processors, <a target="blank" href="https://cvsweb.openbsd.org/src/distrib/miniroot/install.sub">installer</a> will rename /bsd to /bsd.sp and finally /bsd.mp to /bsd
             </blockquote>
         </section>
 
-        <section>
+        <section id="kld">
+            <h1>Kernel modules</h1>
+            <code>
+                # List kernel modules loaded
+                kldstat
+                
+                # Load a kernel module
+                kldload pf
+                
+                # Unload a kernel module
+                kldunload pf
+            </code>
+        </section>
+
+        <section id="tune">
+            <h2>tune the system</h2>
+            <p>
+                <a target="_blank" href="https://man.openbsd.org/OpenBSD-6.9/sysctl.conf">sysctl.conf(5)</a> sysctl variables to set at system startup<br>
+                <a target="_blank" href="https://man.openbsd.org/OpenBSD-6.9/sysctl">sysctl(8)</a> get or set kernel state<br>
+                &amp; <br>
+                <a target="_blank" href="https://man.openbsd.org/OpenBSD-6.9/config">config(8)</a> modify a kernel<br>
+            </p>
+        </section>
+
+        <!-- Desktop -->
+
+        <section id="laptop">
+            <h2>setting laptop hibernation (sysctl)</h2>
+            <table>
+                <tbody>
+                    <tr>
+                        <td>machdep.lidaction=0</td>
+                        <td>do nothing</td>
+                    </tr>
+                    <tr>
+                        <td>machdep.lidaction=1</td>
+                        <td>suspend</td>
+                    </tr>
+                    <tr>
+                        <td>machdep.lidaction=2</td>
+                        <td>hibernate</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="de">
+            <h2>Desktop environment</h2>
+        </section>
+
+        <!-- Embedded? -->
+
+        <!-- Virtualization -->
+
+        <section id="jails">
+            <h2>Jails</h2>
+			<p>...</p>
+        </section>
+
+        <section id="bhyve">
+            <h2>Bhyve</h2>
+			<p>...</p>
+        </section>
+
+        <section id="ktrace">
             <h2>ktrace/kdump sample usage</h2>
             <table>
                 <tbody>
@@ -861,49 +768,9 @@ Contents
             </blockquote>
         </section>
 
-        <section>
-            <h2>some useful packages</h2>
-            <table>
-                <tbody>
-                    <tr>
-                        <td>screenfetch</td>
-                        <td>Display system information in the terminal</td>
-                    </tr>
-                    <tr>
-                        <td>w3m</td>
-                        <td>Text-based web browser</td>
-                    </tr>
-                    <tr>
-                        <td>noice</td>
-                        <td>
-                            minimalistic file browser
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </section>
+        <!-- Extra -->
 
-        <section>
-            <h2>some useful packages (continued)</h2>
-            <table>
-                <tbody>
-                    <tr>
-                        <td>pstree</td>
-                        <td>List processes as a tree</td>
-                    </tr>
-                    <tr>
-                        <td>tmate</td>
-                        <td>Share your terminal on the web without open any ports</td>
-                    </tr>
-                    <tr>
-                        <td>testdisk</td>
-                        <td>Scan and repair disk partitions</td>
-                    </tr>
-                </tbody>
-            </table>
-        </section>
-
-        <section>
+        <section id="bonus">
             <h2>Bonus</h2>
             <ul>
                 <li><a href="https://www.bsdstore.ru/en/about.html" target="_blank">CBSD</a>, a management layer written for the FreeBSD jail(8) subsystem, bhyve and Xen</li>
@@ -911,26 +778,34 @@ Contents
             </ul>
         </section>
 
-        <section>
+        <section id="papers">
             <h2>presentations &amp; papers </h2>
-            <p><a target="_blank" href="https://papers.freebsd.org">https://papers.freebsd.org</a></p>
+            <ul>
+                <li>
+                    <a target="_blank" href="https://papers.freebsd.org">https://papers.freebsd.org</a>
+                </li>
+                <li>
+                    <a href="https://freebsdfoundation.org/our-work/journal/">FreeBSD Journal</a>
+                </li>
+            </ul>
         </section>
 
-        <section>
-            <h2>need more help</h2>
+        <section id="community-help">
+            <h2>Community help</h2>
             <p>
                 IRC Channel: <a target="_blank" href="ircs://irc.freenode.net:6697/freebsd">#freebsd</a><br>
                 Mailing list: <a target="_blank" href="https://lists.freebsd.org/mailman/listinfo/freebsd-questions">freebsd-questions@</a>
+                Telegram chats: <a href="https://t.me/FreeBSD1">FreeBSD1</a>, <a href="https://t.me/freebsd_ru">FreeBSD (russian)</a>
             </p>
         </section>
 
-        <section>
+        <section id="freebsd-hosting">
             <h2>openbsd vps hosting</h2>
             <p>It's time to create your own OpenBSD VM !</p>
             <p><a target="_blank" href="https://arpnetworks.com"><img src="images/arp.png" alt="ARP Networks logo"></a></p>
             <a target="_blank" href="https://openbsd.amsterdam"><img src="images/obsd-ams.png" alt="OpenBSD Amsterdam logo"></a>
         </section>
-    </div>
+
 </body>
 
 </html>
