@@ -178,6 +178,14 @@ code {
   color: #268bd2;
 }
 
+code{
+  padding-bottom: 1em;
+}
+
+code.inline {
+  padding: 5px;
+  display: inline;
+}
 /* Optional classes */
 
 .hljs-comment {

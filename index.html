@@ -174,7 +174,6 @@
         <code>
             # How to read a man page, for example foo(5)?
             man 5 foo
-            
         </code>
         <p>
             Or view it on your browser at: <a target="_blank" href="https://man.freebsd.org">https://man.freebsd.org</a>
@@ -223,7 +222,6 @@
             # For example, to start the sshd(8) daemon for OpenSSH SSH daemon, you might do
             service sshd enable
             service sshd start
-	    
         </code>
         <blockquote>
             Read:
@@ -238,15 +236,14 @@
     <section id="networking">
         <h2>Networking</h2>
         <code>
-        # Display the current configuration of network interfaces
-        ifconfig
+            # Display the current configuration of network interfaces
+            ifconfig
 
-        # Set DHCP for 'em0' interface, on the fly
-        dhclient em0
+            # Set DHCP for 'em0' interface, on the fly
+            dhclient em0
 
-        # Perform network (re)initialisation
-        sh /etc/rc.d/netif restart
-	    
+            # Perform network (re)initialisation
+            sh /etc/rc.d/netif restart
         </code>
     </section>
 
@@ -281,7 +278,6 @@
         <h3>Example 1: configure static IP address for em0</h3>
         <code>
             sysrc ifconfig_em0="inet 192.168.0.58/24"
-	    
         </code>
         <blockquote>
             Don't forget to run <code>sh /etc/rc.d/netif restart</code> to apply changes to running system.
@@ -292,8 +288,7 @@
         <h2>networking (set at startup)</h2>
         <h3>Example 2: configure DHCP for em0</h3>
         <code>
-        sysrc ifconfig_em0="DHCP"
-	    
+            sysrc ifconfig_em0="DHCP"
         </code>
         <blockquote>
             Don't forget to run <code>sh /etc/rc.d/netif restart</code> to apply changes to running system.
@@ -304,47 +299,43 @@
             <h2>networking (set at startup)</h2>
             <h3>Example 3: configure wireless</h3>
             <code>
-            # First, see a list of available wireless networks:
-            ifconfig wlan0 scan
-		    
+                # First, see a list of available wireless networks:
+                ifconfig wlan0 scan
             </code>
 	</section>
 	<section id="networking-wireless-1">
             <h3>Example 3: configure wireless (suite)</h3>
             <code>
-            File: /etc/wpa_supplicant.conf
-            eapol_version=2
-            ap_scan=1
-            fast_reauth=1
+                File: /etc/wpa_supplicant.conf
+                eapol_version=2
+                ap_scan=1
+                fast_reauth=1
 
-            network={
-                ssid="SSID"
-                scan_ssid=0
-                psk="KEY"
-                priority=5
-            }
-		    
+                network={
+                    ssid="SSID"
+                    scan_ssid=0
+                    psk="KEY"
+                    priority=5
+                }
             </code>
 	</section>
 	<section id="networking-wireless-2">
-            <h3>Example 3: configure wireless (suite)</h3>
-            <code>
+        <h3>Example 3: configure wireless (suite)</h3>
+        <code>
             File: /etc/wpa_supplicant.conf            
             network={
                 priority=0
                 key_mgmt=NONE
             }
-		    
-          </code>
+      </code>
 	</section>
 	
 	<section>
 	    <h3>Example 3: configure wireless (suite)</h3>
         <code>
-        # Configure wlan
-        sysrc wlans_ath0="wlan0"
-        sysrc ifconfig_wlan0="WPA DHCP"
-	    
+            # Configure wlan
+            sysrc wlans_ath0="wlan0"
+            sysrc ifconfig_wlan0="WPA DHCP"
         </code>
     	<blockquote>
     	   Don't forget to run <code>sh /etc/rc.d/netif restart</code> to apply changes to running system.
@@ -514,46 +505,46 @@
     <section id="routing">
         <h2>Routing</h2>
         <code>
-        # Show the routing table (ipv4)
-        netstat -rn4
+            # Show the routing table (ipv4)
+            netstat -rn4
 
-        # Show the routing table (ipv6)
-        netstat -rn6
+            # Show the routing table (ipv6)
+            netstat -rn6
 
-        # Delete all gateway entries from the routing table
-        route -n flush
+            # Delete all gateway entries from the routing table
+            route -n flush
         </code>
     </section>
 
     <section id="routing-pf">
         <h2>Enable PF</h2>
         <code>
-        service pf enable
-        sysrc pf_rules=/etc/pf.conf
-        
-        service pflog enable
-        sysrc pflog_logfile=/var/log/pflog
-        
-        # create your /etc/pf.conf, then start pf
-        service pf start
+            service pf enable
+            sysrc pf_rules=/etc/pf.conf
+            
+            service pflog enable
+            sysrc pflog_logfile=/var/log/pflog
+            
+            # create your /etc/pf.conf, then start pf
+            service pf start
         </code>
     </section>
 
     <section id="routing-pf-ruleset">
         <h2>PF ruleset sample</h2>
         <code>
-        File: /etc/pf.conf
-        # Add your network card to egress group
-        # ifconfig em0 group egress
-        # or sysrc ifconfig_em0+="group egress"
-    	#
-        # Protect a laptop (allow only ping/ssh from anywhere)
+            File: /etc/pf.conf
+            # Add your network card to egress group
+            # ifconfig em0 group egress
+            # or sysrc ifconfig_em0+="group egress"
+        	#
+            # Protect a laptop (allow only ping/ssh from anywhere)
 
-        set skip on lo
-        block log all
-        pass in on egress inet proto icmp all icmp-type echoreq
-        pass in on egress inet proto tcp from any to any port ssh
-        pass out
+            set skip on lo
+            block log all
+            pass in on egress inet proto icmp all icmp-type echoreq
+            pass in on egress inet proto tcp from any to any port ssh
+            pass out
         </code>
         <blockquote>
             Read: <a target="_blank" href="https://man.freebsd.org/pf.conf/5">pf.conf(5)</a>
@@ -566,20 +557,20 @@
         <h3>(Useful commands)</h3>
 
         <code>
-        # Disable PF
-        pfctl -d
-        
-        # Check your rules
-        pfctl -nf /etc/pf.conf
+            # Disable PF
+            pfctl -d
+            
+            # Check your rules
+            pfctl -nf /etc/pf.conf
 
-        # Enable PF and load the rules
-        pfctl -ef /etc/pf.conf
+            # Enable PF and load the rules
+            pfctl -ef /etc/pf.conf
 
-        # Just load the rules (apply changes)
-        pfctl -f /etc/pf.conf
+            # Just load the rules (apply changes)
+            pfctl -f /etc/pf.conf
 
-        # View the loaded rules
-        pfctl -s rules
+            # View the loaded rules
+            pfctl -s rules
         </code>
         <blockquote>
             Read: <a target="_blank" href="https://man.freebsd.org/pfctl/8">pfctl(8)</a>
@@ -633,7 +624,7 @@
     <section id="updating">
         <h2>Updating FreeBSD (RELEASE)</h2>
         <p>Just use freebsd-update</p>
-        <p>And <code>pkg upgrade</code> to update packages.</p>
+        <p>And <code class="inline">pkg upgrade</code> to update packages.</p>
     </section>
 
     <section id="freebsd-version">
@@ -671,23 +662,23 @@
         <table>
             <tbody>
                 <tr>
-                    <td><code>doas pkg_check -F</code></td>
+                    <td><code class="inline">doas pkg_check -F</code></td>
                     <td>Checks that there are no other random objects under /usr/local</td>
                 </tr>
                 <tr>
-                    <td><code>doas dmesg -s</code></td>
+                    <td><code class="inline">doas dmesg -s</code></td>
                     <td>Review rc(8) system startup messages</td>
                 </tr>
                 <tr>
-                    <td><code>ldd foobar</code></td>
+                    <td><code class="inline">ldd foobar</code></td>
                     <td>List dynamic object dependencies</td>
                 </tr>
                 <tr>
-                    <td><code>df -h</code></td>
+                    <td><code class="inline">df -h</code></td>
                     <td>See disk usage</td>
                 </tr>
                 <tr>
-                    <td><code>top -s .1</code></td>
+                    <td><code class="inline">top -s .1</code></td>
                     <td>Check load (cpu/mem)</td>
                 </tr>
             </tbody>
@@ -782,12 +773,12 @@
         <table>
             <tbody>
                 <tr>
-                    <td><code>ktrace -f ping.out \
+                    <td><code class="inline">ktrace -f ping.out \
                             ping openbsd.org</code></td>
                     <td>proceed process tracing</td>
                 </tr>
                 <tr>
-                    <td><code>kdump -f ping.out</code></td>
+                    <td><code class="inline">kdump -f ping.out</code></td>
                     <td>interprets the data from ktrace into a human readable format</td>
                 </tr>
             </tbody>
