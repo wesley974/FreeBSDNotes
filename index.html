@@ -284,7 +284,7 @@
             </blockquote>
         </section>
 
-        <section id="networking-dhcp>
+        <section id="networking-dhcp">
             <h2>networking (set at startup)</h2>
             <h3>Example 2: configure DHCP for em0</h3>
             <code>
@@ -341,7 +341,7 @@
                 url: "pkg+http://pkg.FreeBSD.org/${ABI}/latest",
 
                 You can switch it to the last one:
-                <pre>
+		    
                    mkdir -p /usr/local/etc/pkg/repos
                    cat &gt; /usr/local/etc/pkg/repos/FreeBSD.conf &lt;&lt;EOF
                      FreeBSD: { enabled: no }
@@ -353,7 +353,6 @@
                        enabled: yes
                      }
                    EOF
-                </pre>
 
                 # Search for packages
                 pkg search foobar
