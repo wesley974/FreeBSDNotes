@@ -161,7 +161,7 @@ blockquote code {
   padding: 5px 15px;
 }
 
-code {
+code, span {
   font-family: monospace;
   white-space: pre;
 }
@@ -194,4 +194,10 @@ span .hljs-comment {
 
 .text-justify {
   text-align: justify;
+}
+
+span {
+  background-color:  #161B1D;
+  color:  #B8B08D;
+  padding:  4px 8px;
 }
