@@ -165,7 +165,7 @@
             </tbody>
         </table>
         <blockquote>
-            See also: hier(7)
+            Read: <a target="_blank" href="https://man.freebsd.org/hier/7">hier(7)</a>
         </blockquote>
     </section>
 
@@ -176,20 +176,20 @@
             man 5 foo
         </code>
         <p>
-            Or view it on your browser at: <a target="_blank" href="https://man.freebsd.org">https://man.freebsd.org</a>
+            Or view it in your browser at: <a target="_blank" href="https://man.freebsd.org">https://man.freebsd.org</a>
         </p>
     </section>
 
     <section id="firmware">
         <h2>Non-free firmware packages</h2>
-        <p>Some of firmware distributed by ports collection.</p>
-        <p>For graphics-related issues see: <a href="https://github.com/FreeBSDDesktop">FreeBSDDesktop</a> project</p>
+        <p>Some of the firmware files are distributed by ports collection.</p>
+        <p>For graphics-related issues, please see: <a href="https://github.com/FreeBSDDesktop">FreeBSDDesktop</a> project</p>
     </section>
 
     <section id="filesystems">
         <h2>Filesystem</h2>
         <p>
-            FreeBSD offers two filesystems out of the box: UFS and ZFS.
+            FreeBSD offers two filesystems out of the box: UFS & ZFS.
         </p>
     </section>
 
@@ -200,8 +200,12 @@
 
     <section id="rc.conf">
         <h2>Configuring FreeBSD</h2>
-        <p>/etc/rc.conf is key-value file, by which FreeBSD if generally configured.</p>
-        <p>rc.conf is read by /etc/rc during <a href="#startup">startup process</a>.
+        <p>/etc/rc.conf is key-value file, by which FreeBSD if generally configured. You just need to use sysrc(8) or service(8) to change
+     values in a safe and effective manner.</p>
+        <p>A useful file read by /etc/rc during <a href="#startup">startup process</a>.
+	<blockquote>
+	    Read: <a target="_blank" href="https://man.freebsd.org/sysrc/8">sysrc(8)</a> <a target="_blank" href="https://man.freebsd.org/service/8">service(8)</a>
+	    </blockquote>
     </section>
 
     <section id="rc.local">
@@ -227,7 +231,7 @@
             Read:
             <a target="_blank" href="https://man.freebsd.org/service/8">service(8)</a>
             <a target="_blank" href="https://man.freebsd.org/sysrc/8">sysrc(8)</a>
-            <a target="_blank" href="https://man.freebsd.org/rc.conf/5">rc.conf(5)</a>,
+            <a target="_blank" href="https://man.freebsd.org/rc.conf/5">rc.conf(5)</a>
         </blockquote>
     </section>
 
