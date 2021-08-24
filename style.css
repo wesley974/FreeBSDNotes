@@ -2,28 +2,10 @@
   owner: Wesley Mouedine Assaby
   originally from:  https://openbsdjumpstart.org/css/style.css
   edited: Egor Kuzmichev
-  
-  :root {
-  --color0: #002b36; used
-  --color1: #93a1a1; used
-  --color2: #fcd030; used
-  --color3: #f3715a; used
-  --color4: #268bd2; used
-  --color5: #eee8d5; used
-  --color6: #a7a2a9; used
-  --color7: #ffbb1f; used
-  --color8: #310dff; used
-  --color9: #161b1d; used
-  --colorA: #b8b08d; used
-  --colorB: #7ea2b4; used
-
-}
-
 */
 
 @import url(https://fonts.googleapis.com/css?family=Montserrat:700);
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,700);
-
 
 body {
   margin:0;
@@ -31,8 +13,9 @@ body {
   background: black;
 }
 
+/* Sections */
+
 section {
-  /* background-color: #002b36; */
   background: linear-gradient(#ab2b28, #000000);
   font-family: 'Roboto', sans-serif;
   color: #cccccc;
@@ -40,7 +23,6 @@ section {
   height: 100vh;
 }
 
-/* Specific sections */
 #logo {
   text-align: center;
 }
@@ -54,7 +36,6 @@ h5,
 strong {
   font-family: "Montserrat", sans-serif;
 }
-
 
 h1 {  
   font-size: 3em;
