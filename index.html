@@ -771,7 +771,17 @@
 
     <section id="jails">
         <h2>Jails</h2>
-		<p>...</p>
+		<p>Use bsdinstall(8) to make independent copy of FreeBSD directory tree:</p>
+        <code>
+            # bsdinstall jail /usr/jails/test-jail 
+        </code>
+        <p>Run command with jail(8):</p>
+        <code>
+            # jail /data/jail/test-jail testhostname 192.168.11.100 /bin/sh
+        </code>
+        <blockquote>
+            See: <a href="https://man.freebsd.org/bsdinstall" target="_blank">bsdinstall(8)</a>, <a href="https://man.freebsd.org" target="_blank">jail(8)</a>, <a href="https://docs.freebsd.org/en/books/handbook/jails/">Jails</a> chapter in handbook
+        </blockquote>
     </section>
 
     <section id="bhyve">
