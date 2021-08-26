@@ -656,12 +656,15 @@
     </section>
 
     <section id="freebsd-upgrade">
-        <h2>upgrade openbsd</h2>
+        <h2>Upgrade FreeBSD</h2>
         <p>
-            To upgrade 6.7 to 6.9, you need to follow instructions from: <a target="_blank" href="https://www.openbsd.org/faq/upgrade68.html">https://www.openbsd.org/faq/upgrade68.html</a><br>and then<br><a target="_blank" href="https://www.openbsd.org/faq/upgrade69.html">https://www.openbsd.org/faq/upgrade69.html</a>
+            To upgrade 12.2 to 13.0, use:
         </p>
+        <code>
+            freebsd-update -r 13.0-RELEASE upgrade
+        </code>
         <blockquote>
-            <a target="_blank" href="https://man.openbsd.org/OpenBSD-6.9/sysupgrade">sysupgrade(8)</a>, is a utility to upgrade OpenBSD to the next release or a new snapshot.
+            See: <a href="https://man.freebsd.org/freebsd-update" target="_blank">freebsd-update(8)</a>, <a href="https://docs.freebsd.org/en/books/handbook/cutting-edge/#freebsdupdate-upgrade" target="_blank">Performing upgrade</a> section in handbook.
         </blockquote>
     </section>
 
