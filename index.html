@@ -249,11 +249,16 @@
             service sshd enable
             service sshd start
         </code>
+        <code>
+            # print a dependency ordering of services
+            rcorder /etc/rc.d/* /usr/local/etc/rc.d/*
+        </code>
         <blockquote>
             Read:
             <a target="_blank" href="https://man.freebsd.org/service/8">service(8)</a>
             <a target="_blank" href="https://man.freebsd.org/sysrc/8">sysrc(8)</a>
             <a target="_blank" href="https://man.freebsd.org/rc.conf/5">rc.conf(5)</a>
+            <a target="_blank" href="https://man.freebsd.org/rcorder/8">rcorder(8)</a>
         </blockquote>
     </section>
 
