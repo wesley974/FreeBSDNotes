@@ -198,8 +198,24 @@
     <section id="zfs">
         <h2>ZFS</h2>
         <p>- ZFS is a powerful enterprise-ready open source file system, part of FreeBSD <a href="https://lists.freebsd.org/pipermail/freebsd-current/2007-April/070544.html">since 2007</a></p>
-	<p>- Switch to <a href="https://github.com/openzfs/zfs" target="_blank">OpenZFS</a> in FreeBSD 13.0</a></p>
-    </section>   
+        <p>- Switch to <a href="https://github.com/openzfs/zfs" target="_blank">OpenZFS</a> in FreeBSD 13.0</a></p>
+    </section>
+
+    <section id="zfs-1">
+        <h2>ZFS (continued)</h2>
+        <code>
+            # create snapshot for home directory:
+            zfs snapshot zroot/usr/home@snap1
+
+            # rollback snapshot:
+            zfs rollback zroot/usr/home@snap1
+        </code>
+        <blockquote>
+            Read:
+            <a target="_blank" href="https://man.freebsd.org/zfs/8">zfs(8)</a>,
+            <a target="_blank" href="https://www.freshports.org/sysutils/beadm">beadm</a>
+        </blockquote>
+    </section>
 
     <section id="rc.conf">
         <h2>Configuring FreeBSD</h2>
@@ -720,10 +736,10 @@
         <code>
             # List kernel modules loaded
             kldstat
-            
+
             # Load a kernel module
             kldload pf
-            
+
             # Unload a kernel module
             kldunload pf
         </code>
@@ -732,10 +748,10 @@
     <section id="tune">
         <h2>tune the system</h2>
         <p>
-            <a target="_blank" href="https://man.openbsd.org/OpenBSD-6.9/sysctl.conf">sysctl.conf(5)</a> sysctl variables to set at system startup<br>
-            <a target="_blank" href="https://man.openbsd.org/OpenBSD-6.9/sysctl">sysctl(8)</a> get or set kernel state<br>
+            <a target="_blank" href="https://man.freebsd.org/sysctl.conf/5">sysctl.conf(5)</a> sysctl variables to set at system startup<br>
+            <a target="_blank" href="https://man.freebsd.org/tuning/7">tuning(7)</a> performance tuning under FreeBSD<br>
             &amp; <br>
-            <a target="_blank" href="https://man.openbsd.org/OpenBSD-6.9/config">config(8)</a> modify a kernel<br>
+            <a target="_blank" href="https://man.freebsd.org/config/8">config(8)</a> modify a kernel<br>
         </p>
     </section>
 
