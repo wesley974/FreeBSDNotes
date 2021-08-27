@@ -57,6 +57,7 @@
 		    <a href="https://www.freebsd.org/cgi/man.cgi?query=dtrace" target="_blank">dtrace(1)</a>,
 		    <a href="https://www.freebsd.org/cgi/man.cgi?query=hastd" target="_blank">hastd(8)</a>,
 		    <a href="https://www.freebsd.org/cgi/man.cgi?query=jails" target="_blank">jail(8)</a>,
+		    <a href="https://www.freebsd.org/cgi/man.cgi?query=ktls" target="_blank">ktls(9)</a>,
 		    <a href="https://www.freebsd.org/cgi/man.cgi?query=linux" target="_blank">linux(4)</a>,
 		    <a href="https://www.freebsd.org/cgi/man.cgi?query=netgraph" target="_blank">netgraph(3)</a>,
 		    <a href="https://www.freebsd.org/cgi/man.cgi?query=netmap" target="_blank">netmap(4)</a>,
@@ -196,7 +197,9 @@
 
     <section id="zfs">
         <h2>ZFS</h2>
-        <p>...</p>
+        <p>- ZFS is an powerful enterprise-ready open source file system</p>
+        <p>- Part of FreeBSD <a href="https://lists.freebsd.org/pipermail/freebsd-current/2007-April/070544.html">since 2007</a></p>
+        <p>- Starting from FreeBSD 13.0 codebase moved to <a href="https://github.com/openzfs/zfs">OpenZFS repository</a></p>
     </section>   
 
     <section id="rc.conf">
@@ -673,12 +676,12 @@
         <table>
             <tbody>
                 <tr>
-                    <td><code class="inline">doas pkg_check -F</code></td>
-                    <td>Checks that there are no other random objects under /usr/local</td>
+                    <td><code class="inline">pkg check -Ba</code></td>
+                    <td>Regenerate the library dependency metadata of all installed package</td>
                 </tr>
                 <tr>
-                    <td><code class="inline">doas dmesg -s</code></td>
-                    <td>Review rc(8) system startup messages</td>
+                    <td><code class="inline">cat /var/run/dmesg.boot</code></td>
+                    <td>Review system startup messages</td>
                 </tr>
                 <tr>
                     <td><code class="inline">ldd foobar</code></td>
@@ -689,24 +692,25 @@
                     <td>See disk usage</td>
                 </tr>
                 <tr>
-                    <td><code class="inline">top -s .1</code></td>
+                    <td><code class="inline">top -waP -s .1</code></td>
                     <td>Check load (cpu/mem)</td>
                 </tr>
             </tbody>
         </table>
         <blockquote>
             Read:
-            <a target="_blank" href="https://man.openbsd.org/OpenBSD-6.9/pkg_check">pkg_check(8)</a>,
-            <a target="_blank" href="https://man.openbsd.org/OpenBSD-6.9/dmesg">dmesg(8)</a>,
-            <a target="_blank" href="https://man.openbsd.org/OpenBSD-6.9/ldd">ldd(1)</a>,
-            <a target="_blank" href="https://man.openbsd.org/OpenBSD-6.9/ld.so.1">ld.so(1)</a>,
-            <a target="_blank" href="https://man.openbsd.org/OpenBSD-6.9/df">df(1)</a>,
-            <a target="_blank" href="https://man.openbsd.org/OpenBSD-6.9/top">top(1)</a>
+            <a target="_blank" href="https://man.freebsd.org/pkg-check/8">pkg-check(8)</a>,
+            <a target="_blank" href="https://man.freebsd.org/dmesg/8">dmesg(8)</a>,
+            <a target="_blank" href="https://man.freebsd.org/ldd/1">ldd(1)</a>,
+            <a target="_blank" href="https://man.freebsd.org/rtld/1">lrld(1)</a>,
+            <a target="_blank" href="https://man.freebsd.org/df/1">df(1)</a>,
+            <a target="_blank" href="https://man.freebsd.org/top/1">top(1)</a>
+            <a target="_blank" href="https://www.brendangregg.com/Perf/freebsd_observability_tools.png">FreeBSD observability tools</a>
         </blockquote>
     </section>
 
     <!-- Kernel -->
-    
+
     <section id="kernel">
         <h2>FreeBSD kernels</h2>
         <p>Kernel and modules are located in /boot/kernel (the operating system loaded into memory at boot-time).</p>
