@@ -807,7 +807,27 @@
 
     <section id="bhyve">
         <h2>Bhyve</h2>
-		<p>...</p>
+        <p>Bhyve - is a type-2 hypervisor</p>
+        <code>
+            # Load VMM kernel module:
+            kldload vmm
+
+            # Install bhyve UEFI firmware:
+            pkg install -y bhyve-firmware
+
+            # Fetch FreeBSD 13.0 amd64 ISO:
+            fetch -o /tmp/Freebsd-13.0-amd64.iso https://download.freebsd.org/ftp/releases/amd64/amd64/ISO-IMAGES/13.0/FreeBSD-13.0-RELEASE-amd64-disc1.iso
+
+            # Launch bhyve VM1:
+            /usr/sbin/bhyve -c 2 -m 1G -H -A -s 0,hostbridge -s 1,ahci-cd,/tmp/Freebsd-13.0-amd64.iso,ro \
+              -s 8,fbuf,tcp=0.0.0.0:5900,w=1024,h=768 -s 31,lpc -l com1,stdio -l bootrom,/usr/local/share/uefi-firmware/BHYVE_UEFI.fd vm1
+
+            # Use any suitable VNC client to connect &lt;IP&gt;:5900
+        </code>
+        <code>
+            # To destroy VM:
+            bhyvectl --destroy --vm=vm1
+        </code>
     </section>
 
     <section id="ktrace">
