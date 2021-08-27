@@ -198,8 +198,24 @@
     <section id="zfs">
         <h2>ZFS</h2>
         <p>- ZFS is a powerful enterprise-ready open source file system, part of FreeBSD <a href="https://lists.freebsd.org/pipermail/freebsd-current/2007-April/070544.html">since 2007</a></p>
-	<p>- Switch to <a href="https://github.com/openzfs/zfs" target="_blank">OpenZFS</a> in FreeBSD 13.0</a></p>
-    </section>   
+        <p>- Switch to <a href="https://github.com/openzfs/zfs" target="_blank">OpenZFS</a> in FreeBSD 13.0</a></p>
+    </section>
+
+    <section id="zfs-1">
+        <h2>ZFS (continued)</h2>
+        <code>
+            # create snapshot for home directory:
+            zfs snapshot zroot/usr/home@snap1
+
+            # rollback snapshot:
+            zfs rollback zroot/usr/home@snap1
+        </code>
+        <blockquote>
+            Read:
+            <a target="_blank" href="https://man.freebsd.org/zfs/8">zfs(8)</a>,
+            <a target="_blank" href="https://www.freshports.org/sysutils/beadm">beadm</a>,
+        </blockquote>
+    </section>
 
     <section id="rc.conf">
         <h2>Configuring FreeBSD</h2>
